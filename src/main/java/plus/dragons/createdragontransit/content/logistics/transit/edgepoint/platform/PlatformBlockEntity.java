@@ -1,4 +1,4 @@
-package plus.dragons.createdragontransit.content.logistics.transit.management.edgepoint.station;
+package plus.dragons.createdragontransit.content.logistics.transit.edgepoint.platform;
 
 import com.simibubi.create.content.contraptions.components.structureMovement.ITransformableTE;
 import com.simibubi.create.content.contraptions.components.structureMovement.StructureTransform;
@@ -13,11 +13,11 @@ import plus.dragons.createdragontransit.DragonTransit;
 
 import java.util.List;
 
-public class TransitStationPlatformBlockEntity extends SmartTileEntity implements ITransformableTE {
+public class PlatformBlockEntity extends SmartTileEntity implements ITransformableTE {
 
     public TrackTargetingBehaviour<PlatformEdgePoint> edgePoint;
 
-    public TransitStationPlatformBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+    public PlatformBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 

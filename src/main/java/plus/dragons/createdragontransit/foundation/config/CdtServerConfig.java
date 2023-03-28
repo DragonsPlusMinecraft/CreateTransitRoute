@@ -15,7 +15,7 @@ public class CdtServerConfig extends ConfigBase {
         "Maximum number of lines that can be interchanged at a station.",
         "World record are King's Cross St. Pancras in London, an interchange between six lines and Chatelet in Paris, an interchange between five lines.",
         ConfigAnnotations.RequiresRestart.SERVER.asComment());
-    public final ConfigInt maxStationsInALineSegment = i(4000, 0,
+    public final ConfigInt maxStationsInALineSegment = i(40, 0,
         "maxStationsInALine",
         "Maximum number of stations that can be included in a line segment.",
         ConfigAnnotations.RequiresRestart.SERVER.asComment());

@@ -1,4 +1,4 @@
-package plus.dragons.createdragontransit.content.logistics.transit.entity;
+package plus.dragons.createdragontransit.content.logistics.transit.train;
 
 import com.simibubi.create.content.logistics.trains.TrackGraph;
 import com.simibubi.create.content.logistics.trains.entity.Carriage;

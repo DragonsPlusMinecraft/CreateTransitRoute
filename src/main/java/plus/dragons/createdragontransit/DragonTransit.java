@@ -17,7 +17,7 @@ import org.slf4j.Logger;
 import plus.dragons.createdragonlib.init.SafeRegistrate;
 import plus.dragons.createdragonlib.lang.Lang;
 import plus.dragons.createdragontransit.content.logistics.transit.DTManager;
-import plus.dragons.createdragontransit.content.logistics.transit.management.edgepoint.station.PlatformEdgePoint;
+import plus.dragons.createdragontransit.content.logistics.transit.edgepoint.platform.PlatformEdgePoint;
 import plus.dragons.createdragontransit.entry.CdtBlockEntities;
 import plus.dragons.createdragontransit.entry.CdtBlocks;
 import plus.dragons.createdragontransit.entry.CdtPackets;

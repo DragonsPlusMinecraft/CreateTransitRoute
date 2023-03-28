@@ -1,17 +1,14 @@
-package plus.dragons.createdragontransit.content.logistics.transit.management.edgepoint.station;
+package plus.dragons.createdragontransit.content.logistics.transit.edgepoint.platform;
 
-import com.simibubi.create.Create;
-import com.simibubi.create.content.logistics.trains.GraphLocation;
 import com.simibubi.create.foundation.networking.TileEntityConfigurationPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
-import plus.dragons.createdragontransit.DragonTransit;
 
 import java.util.UUID;
 
 public class PlatformEditPacket {
 
-    public static class PlatformUnbind extends TileEntityConfigurationPacket<TransitStationPlatformBlockEntity>{
+    public static class PlatformUnbind extends TileEntityConfigurationPacket<PlatformBlockEntity>{
 
         UUID unbindStation;
 
@@ -36,7 +33,7 @@ public class PlatformEditPacket {
         }
 
         @Override
-        protected void applySettings(TransitStationPlatformBlockEntity te) {
+        protected void applySettings(PlatformBlockEntity te) {
             // TODO
             /*te.getPlatform().station = null;
             PlatformEdgePoint platform = te.getPlatform();

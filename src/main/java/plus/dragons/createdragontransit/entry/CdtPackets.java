@@ -12,14 +12,12 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 import plus.dragons.createdragontransit.DragonTransit;
 import plus.dragons.createdragontransit.content.logistics.transit.DTNetworkSyncPacket;
-import plus.dragons.createdragontransit.content.logistics.transit.management.edgepoint.station.PlatformEditPacket;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT;
-import static net.minecraftforge.network.NetworkDirection.PLAY_TO_SERVER;
 
 public enum CdtPackets {
     DT_NETWORK_INI(DTNetworkSyncPacket.Initialize.class, DTNetworkSyncPacket.Initialize::new, PLAY_TO_CLIENT, LoadedPacket.ConsumeThread.MAIN),

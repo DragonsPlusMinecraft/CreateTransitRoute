@@ -1,4 +1,4 @@
-package plus.dragons.createdragontransit.content.logistics.transit.management.edgepoint.station;
+package plus.dragons.createdragontransit.content.logistics.transit.edgepoint.platform;
 
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllShapes;
@@ -33,9 +33,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.DistExecutor;
 import plus.dragons.createdragontransit.entry.CdtBlockEntities;
 
-public class TransitStationPlatformBlock extends Block implements ITE<TransitStationPlatformBlockEntity>, IWrenchable, ProperWaterloggedBlock {
+public class PlatformBlock extends Block implements ITE<PlatformBlockEntity>, IWrenchable, ProperWaterloggedBlock {
 
-    public TransitStationPlatformBlock(Properties pProperties) {
+    public PlatformBlock(Properties pProperties) {
         super(pProperties);
         registerDefaultState(defaultBlockState().setValue(WATERLOGGED, false));
     }
@@ -123,7 +123,7 @@ public class TransitStationPlatformBlock extends Block implements ITE<TransitSta
     }
 
     @OnlyIn(value = Dist.CLIENT)
-    protected void displayScreen(TransitStationPlatformBlockEntity te, Player player) {
+    protected void displayScreen(PlatformBlockEntity te, Player player) {
         if (!(player instanceof LocalPlayer))
             return;
         PlatformEdgePoint platform = te.getPlatform();
@@ -139,12 +139,12 @@ public class TransitStationPlatformBlock extends Block implements ITE<TransitSta
     }
 
     @Override
-    public Class<TransitStationPlatformBlockEntity> getTileEntityClass() {
-        return TransitStationPlatformBlockEntity.class;
+    public Class<PlatformBlockEntity> getTileEntityClass() {
+        return PlatformBlockEntity.class;
     }
 
     @Override
-    public BlockEntityType<? extends TransitStationPlatformBlockEntity> getTileEntityType() {
+    public BlockEntityType<? extends PlatformBlockEntity> getTileEntityType() {
         return CdtBlockEntities.TRANSIT_STATION_PLATFORM.get();
     }
 

@@ -1,4 +1,4 @@
-package plus.dragons.createdragontransit.content.logistics.transit.management.edgepoint.station;
+package plus.dragons.createdragontransit.content.logistics.transit.edgepoint.platform;
 
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -12,10 +12,10 @@ import plus.dragons.createdragontransit.foundation.gui.CdtGuiTextures;
 // TODO Heavily TODO
 public abstract class PlatformScreen extends AbstractSimiScreen {
     protected CdtGuiTextures background;
-    protected final TransitStationPlatformBlockEntity be;
+    protected final PlatformBlockEntity be;
     protected final PlatformEdgePoint platform;
 
-    public PlatformScreen(TransitStationPlatformBlockEntity be, PlatformEdgePoint platform) {
+    public PlatformScreen(PlatformBlockEntity be, PlatformEdgePoint platform) {
         super(/*Component.literal(platform.code)*/);
         this.be = be;
         this.platform = platform;
@@ -55,7 +55,7 @@ public abstract class PlatformScreen extends AbstractSimiScreen {
         private IconButton removeStation;
         private IconButton editPlatform;
 
-        public Overview(TransitStationPlatformBlockEntity be, PlatformEdgePoint platform) {
+        public Overview(PlatformBlockEntity be, PlatformEdgePoint platform) {
             super(be,platform);
             this.background = CdtGuiTextures.TRANSIT_STATION_PLATFORM;
         }
@@ -125,7 +125,7 @@ public abstract class PlatformScreen extends AbstractSimiScreen {
         private EditBox platformCodeBox;
         private IconButton confirmPlatformEditing;
 
-        public PlatformEditing(TransitStationPlatformBlockEntity be, PlatformEdgePoint platform) {
+        public PlatformEditing(PlatformBlockEntity be, PlatformEdgePoint platform) {
             super(be,platform);
         }
     }
