@@ -15,7 +15,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -32,7 +31,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.DistExecutor;
-import plus.dragons.createdragontransit.content.logistics.transit.TransitStationPlatform;
 import plus.dragons.createdragontransit.entry.CdtBlockEntities;
 
 public class TransitStationPlatformBlock extends Block implements ITE<TransitStationPlatformBlockEntity>, IWrenchable, ProperWaterloggedBlock {
@@ -128,7 +126,7 @@ public class TransitStationPlatformBlock extends Block implements ITE<TransitSta
     protected void displayScreen(TransitStationPlatformBlockEntity te, Player player) {
         if (!(player instanceof LocalPlayer))
             return;
-        TransitStationPlatform platform = te.getPlatform();
+        PlatformEdgePoint platform = te.getPlatform();
         if (platform == null)
             return;
         ScreenOpener.open(new PlatformScreen.Overview(te, platform));

@@ -2,37 +2,21 @@ package plus.dragons.createdragontransit.content.logistics.transit.management.ed
 
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.simibubi.create.content.logistics.trains.management.edgePoint.station.WideIconButton;
 import com.simibubi.create.foundation.gui.AbstractSimiScreen;
 import com.simibubi.create.foundation.gui.element.GuiGameElement;
 import com.simibubi.create.foundation.gui.widget.IconButton;
-import com.simibubi.create.foundation.gui.widget.Indicator;
-import com.simibubi.create.foundation.gui.widget.Label;
-import com.simibubi.create.foundation.networking.AllPackets;
-import com.simibubi.create.foundation.utility.Components;
-import com.simibubi.create.foundation.utility.Pair;
-import com.simibubi.create.foundation.utility.animation.LerpedFloat;
 import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import plus.dragons.createdragontransit.DragonTransit;
-import plus.dragons.createdragontransit.DragonTransitClient;
-import plus.dragons.createdragontransit.content.logistics.transit.TransitLine;
-import plus.dragons.createdragontransit.content.logistics.transit.TransitStation;
-import plus.dragons.createdragontransit.content.logistics.transit.TransitStationPlatform;
 import plus.dragons.createdragontransit.foundation.gui.CdtGuiTextures;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
+// TODO Heavily TODO
 public abstract class PlatformScreen extends AbstractSimiScreen {
     protected CdtGuiTextures background;
     protected final TransitStationPlatformBlockEntity be;
-    protected final TransitStationPlatform platform;
+    protected final PlatformEdgePoint platform;
 
-    public PlatformScreen(TransitStationPlatformBlockEntity be, TransitStationPlatform platform) {
-        super(Component.literal(platform.code));
+    public PlatformScreen(TransitStationPlatformBlockEntity be, PlatformEdgePoint platform) {
+        super(/*Component.literal(platform.code)*/);
         this.be = be;
         this.platform = platform;
     }
@@ -71,7 +55,7 @@ public abstract class PlatformScreen extends AbstractSimiScreen {
         private IconButton removeStation;
         private IconButton editPlatform;
 
-        public Overview(TransitStationPlatformBlockEntity be, TransitStationPlatform platform) {
+        public Overview(TransitStationPlatformBlockEntity be, PlatformEdgePoint platform) {
             super(be,platform);
             this.background = CdtGuiTextures.TRANSIT_STATION_PLATFORM;
         }
@@ -79,7 +63,7 @@ public abstract class PlatformScreen extends AbstractSimiScreen {
         @Override
         protected void init() {
             super.init();
-
+/*
             int x = guiLeft;
             int y = guiTop;
 
@@ -113,13 +97,13 @@ public abstract class PlatformScreen extends AbstractSimiScreen {
             removeStation.active = false;
             removeStation.visible = false;
 
-            addRenderableWidgets(editPlatform,bindStation,editStation,removeStation);
+            addRenderableWidgets(editPlatform,bindStation,editStation,removeStation);*/
         }
 
         @Override
         public void tick() {
             super.tick();
-            if(platform.station==null){
+            /*if(platform.station==null){
                 bindStation.active = true;
                 bindStation.visible = true;
                 editStation.active = false;
@@ -133,7 +117,7 @@ public abstract class PlatformScreen extends AbstractSimiScreen {
                 editStation.visible = true;
                 removeStation.active = true;
                 removeStation.visible = true;
-            }
+            }*/
         }
     }
 
@@ -141,46 +125,7 @@ public abstract class PlatformScreen extends AbstractSimiScreen {
         private EditBox platformCodeBox;
         private IconButton confirmPlatformEditing;
 
-        public PlatformEditing(TransitStationPlatformBlockEntity be, TransitStationPlatform platform) {
-            super(be,platform);
-        }
-    }
-
-    public static class StationSelecting extends PlatformScreen {
-
-        private List<LerpedFloat> horizontalScrolls = new ArrayList<>();
-        private LerpedFloat scroll = LerpedFloat.linear()
-                .startWithValue(0);
-        private final List<Pair<TransitStation, Set<TransitLine>>> entries = new ArrayList<>();
-        private final List<Pair<TransitStation, Set<TransitLine>>> shownEntry = new ArrayList<>();
-        private Indicator onlyShowOwned;
-        private Indicator onlyShowAvailable;
-        private EditBox searchBox;
-
-        public StationSelecting(TransitStationPlatformBlockEntity be, TransitStationPlatform platform) {
-            super(be,platform);
-        }
-    }
-
-    public static class StationCreating extends PlatformScreen {
-        private EditBox stationNameBox;
-        private EditBox stationTranslationNameBox;
-        private Indicator privacyIndicator;
-        private IconButton confirmStationCreating;
-
-        public StationCreating(TransitStationPlatformBlockEntity be, TransitStationPlatform platform) {
-            super(be,platform);
-        }
-    }
-
-    public static class StationEditing extends PlatformScreen {
-        private TransitStation station;
-        private EditBox stationNameBox;
-        private EditBox stationTranslationNameBox;
-        private Indicator privacyIndicator;
-        private IconButton confirmStationEditing;
-
-        public StationEditing(TransitStationPlatformBlockEntity be, TransitStationPlatform platform) {
+        public PlatformEditing(TransitStationPlatformBlockEntity be, PlatformEdgePoint platform) {
             super(be,platform);
         }
     }

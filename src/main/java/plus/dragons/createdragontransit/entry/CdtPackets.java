@@ -11,7 +11,7 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 import plus.dragons.createdragontransit.DragonTransit;
-import plus.dragons.createdragontransit.content.logistics.transit.TransitNetworkSyncPacket;
+import plus.dragons.createdragontransit.content.logistics.transit.DTNetworkSyncPacket;
 import plus.dragons.createdragontransit.content.logistics.transit.management.edgepoint.station.PlatformEditPacket;
 
 import java.util.function.BiConsumer;
@@ -22,9 +22,9 @@ import static net.minecraftforge.network.NetworkDirection.PLAY_TO_CLIENT;
 import static net.minecraftforge.network.NetworkDirection.PLAY_TO_SERVER;
 
 public enum CdtPackets {
-    TRANSIT_NETWORK_INI(TransitNetworkSyncPacket.Initialize.class, TransitNetworkSyncPacket.Initialize::new, PLAY_TO_CLIENT, LoadedPacket.ConsumeThread.MAIN),
-    TRANSIT_NETWORK_UPDATE(TransitNetworkSyncPacket.Update.class, TransitNetworkSyncPacket.Update::new, PLAY_TO_CLIENT, LoadedPacket.ConsumeThread.NETWORK),
-    PLATFORM_UNBIND(PlatformEditPacket.PlatformUnbind.class, PlatformEditPacket.PlatformUnbind::new, PLAY_TO_SERVER, LoadedPacket.ConsumeThread.NETWORK);
+    DT_NETWORK_INI(DTNetworkSyncPacket.Initialize.class, DTNetworkSyncPacket.Initialize::new, PLAY_TO_CLIENT, LoadedPacket.ConsumeThread.MAIN),
+    DT_NETWORK_UPDATE(DTNetworkSyncPacket.Update.class, DTNetworkSyncPacket.Update::new, PLAY_TO_CLIENT, LoadedPacket.ConsumeThread.NETWORK);
+    // PLATFORM_UNBIND(PlatformEditPacket.PlatformUnbind.class, PlatformEditPacket.PlatformUnbind::new, PLAY_TO_SERVER, LoadedPacket.ConsumeThread.NETWORK);
     public static final ResourceLocation CHANNEL_NAME = DragonTransit.genRL("main");
     public static final int NETWORK_VERSION = 1;
     public static final String NETWORK_VERSION_STR = String.valueOf(NETWORK_VERSION);

@@ -3,7 +3,6 @@ package plus.dragons.createdragontransit.content.logistics.transit.management.ed
 import com.simibubi.create.content.contraptions.components.structureMovement.ITransformableTE;
 import com.simibubi.create.content.contraptions.components.structureMovement.StructureTransform;
 import com.simibubi.create.content.logistics.trains.management.edgePoint.TrackTargetingBehaviour;
-import com.simibubi.create.content.logistics.trains.management.edgePoint.station.GlobalStation;
 import com.simibubi.create.foundation.tileEntity.SmartTileEntity;
 import com.simibubi.create.foundation.tileEntity.TileEntityBehaviour;
 import net.minecraft.core.BlockPos;
@@ -11,20 +10,18 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import plus.dragons.createdragontransit.DragonTransit;
-import plus.dragons.createdragontransit.content.logistics.transit.TransitStationPlatform;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class TransitStationPlatformBlockEntity extends SmartTileEntity implements ITransformableTE {
 
-    public TrackTargetingBehaviour<TransitStationPlatform> edgePoint;
+    public TrackTargetingBehaviour<PlatformEdgePoint> edgePoint;
 
     public TransitStationPlatformBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 
-    public TransitStationPlatform getPlatform() {
+    public PlatformEdgePoint getPlatform() {
         return edgePoint.getEdgePoint();
     }
 

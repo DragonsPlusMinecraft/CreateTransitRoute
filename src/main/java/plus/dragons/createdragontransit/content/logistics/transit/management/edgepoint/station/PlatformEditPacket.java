@@ -6,7 +6,6 @@ import com.simibubi.create.foundation.networking.TileEntityConfigurationPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import plus.dragons.createdragontransit.DragonTransit;
-import plus.dragons.createdragontransit.content.logistics.transit.TransitStationPlatform;
 
 import java.util.UUID;
 
@@ -38,15 +37,16 @@ public class PlatformEditPacket {
 
         @Override
         protected void applySettings(TransitStationPlatformBlockEntity te) {
-            te.getPlatform().station = null;
-            TransitStationPlatform platform = te.getPlatform();
+            // TODO
+            /*te.getPlatform().station = null;
+            PlatformEdgePoint platform = te.getPlatform();
             GraphLocation graphLocation = te.edgePoint.determineGraphLocation();
             if (platform != null && graphLocation != null) {
                 Create.RAILWAYS.sync.pointAdded(graphLocation.graph, platform);
                 Create.RAILWAYS.markTracksDirty();
             }
 
-            DragonTransit.ROUTES.removePlatformFromStation(unbindStation,te.getPlatform().id);
+            DragonTransit.TRANSIT_MANAGER.removePlatformFromStation(unbindStation,te.getPlatform().id);*/
         }
     }
 }

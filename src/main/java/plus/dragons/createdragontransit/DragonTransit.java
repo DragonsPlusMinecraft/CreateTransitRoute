@@ -16,8 +16,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import plus.dragons.createdragonlib.init.SafeRegistrate;
 import plus.dragons.createdragonlib.lang.Lang;
-import plus.dragons.createdragontransit.content.logistics.transit.TransitNetworkManager;
-import plus.dragons.createdragontransit.content.logistics.transit.TransitStationPlatform;
+import plus.dragons.createdragontransit.content.logistics.transit.DTManager;
+import plus.dragons.createdragontransit.content.logistics.transit.management.edgepoint.station.PlatformEdgePoint;
 import plus.dragons.createdragontransit.entry.CdtBlockEntities;
 import plus.dragons.createdragontransit.entry.CdtBlocks;
 import plus.dragons.createdragontransit.entry.CdtPackets;
@@ -31,9 +31,9 @@ public class DragonTransit
     public static final String NAME = "Create Dragon Transit";
     public static final CreateRegistrate REGISTRATE = new SafeRegistrate(ID);
     public static final Lang LANG = new Lang(ID);
-    public static TransitNetworkManager ROUTES = new TransitNetworkManager();
-    public static final EdgePointType<TransitStationPlatform> PLATFORM =
-            EdgePointType.register(genRL("platform"), TransitStationPlatform::new);
+    public static DTManager TRANSIT_MANAGER = new DTManager();
+    public static final EdgePointType<PlatformEdgePoint> PLATFORM =
+            EdgePointType.register(genRL("platform"), PlatformEdgePoint::new);
 
 
     public DragonTransit() {
@@ -44,7 +44,7 @@ public class DragonTransit
 
         registerEntries(modEventBus);
         modEventBus.addListener(DragonTransit::setup);
-        registerTransitNetworkManagerEvent(forgeEventBus);
+        registerDTNetworkManagerEvent(forgeEventBus);
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> DragonTransitClient::new);
     }
 
@@ -54,9 +54,9 @@ public class DragonTransit
         CdtBlockEntities.register();
     }
 
-    private void registerTransitNetworkManagerEvent(IEventBus forgeEventBus) {
-        forgeEventBus.addListener(TransitNetworkManager::playerLoggedIn);
-        forgeEventBus.addListener(TransitNetworkManager::onLoadWorld);
+    private void registerDTNetworkManagerEvent(IEventBus forgeEventBus) {
+        forgeEventBus.addListener(DTManager::onPlayerLoggedIn);
+        forgeEventBus.addListener(DTManager::onLoadWorld);
     }
 
     @SubscribeEvent
