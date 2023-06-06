@@ -23,6 +23,7 @@ public class DTStation {
         this.isPrivate = true;
     }
 
+    @SuppressWarnings("ConstantConditions")
     public DTStation(CompoundTag tag) {
         this.id = tag.getUUID("ID");
         this.names = Couple.create(tag.getString("Name"), tag.getString("TName"));

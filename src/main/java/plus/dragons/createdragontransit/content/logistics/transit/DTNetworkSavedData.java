@@ -10,8 +10,7 @@ public class DTNetworkSavedData extends SavedData {
 
     @Override
     public CompoundTag save(CompoundTag compoundTag) {
-        network.save(compoundTag);
-        return compoundTag;
+        return network.save(compoundTag);
     }
 
     private static DTNetworkSavedData load(CompoundTag compoundTag) {

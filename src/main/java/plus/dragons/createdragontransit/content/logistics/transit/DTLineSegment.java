@@ -26,6 +26,7 @@ public class DTLineSegment {
         this.emergency = false;
     }
 
+    @SuppressWarnings("ConstantConditions")
     public DTLineSegment(CompoundTag tag) {
         this.id = tag.getUUID("ID");
         this.names = Couple.create(tag.getString("Name"),tag.getString("TName"));
