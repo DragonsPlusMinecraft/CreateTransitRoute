@@ -4,7 +4,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.common.util.INBTSerializable;
 
-public interface SerializableData<T extends SerializableData<T>> extends INBTSerializable<CompoundTag> {
+public interface ISerializableData<T extends ISerializableData<T>> extends INBTSerializable<CompoundTag> {
 
     T readFromPacket(FriendlyByteBuf packet);
 

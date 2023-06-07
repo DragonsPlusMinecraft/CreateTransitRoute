@@ -1,4 +1,4 @@
-package plus.dragons.createcommutenetwork.content.logistics.commute.train.platform;
+package plus.dragons.createcommutenetwork.content.logistics.commute.train.commuteStation;
 
 import com.simibubi.create.content.contraptions.ITransformableBlockEntity;
 import com.simibubi.create.content.contraptions.StructureTransform;
@@ -15,19 +15,19 @@ import java.util.List;
 
 public class PlatformBlockEntity extends SmartBlockEntity implements ITransformableBlockEntity {
 
-    public TrackTargetingBehaviour<PlatformEdgePoint> edgePoint;
+    public TrackTargetingBehaviour<CommuteStationEdgePoint> edgePoint;
 
     public PlatformBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 
-    public PlatformEdgePoint getPlatform() {
+    public CommuteStationEdgePoint getPlatform() {
         return edgePoint.getEdgePoint();
     }
 
     @Override
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
-        behaviours.add(edgePoint = new TrackTargetingBehaviour<>(this, DragonTransit.PLATFORM));
+        behaviours.add(edgePoint = new TrackTargetingBehaviour<>(this, DragonTransit.COMMUTE_STATION));
     }
 
     @Override

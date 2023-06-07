@@ -1,4 +1,4 @@
-package plus.dragons.createcommutenetwork.content.logistics.commute.train.platform;
+package plus.dragons.createcommutenetwork.content.logistics.commute.train.commuteStation;
 
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -13,9 +13,9 @@ import plus.dragons.createcommutenetwork.foundation.gui.CcnGuiTextures;
 public abstract class PlatformScreen extends AbstractSimiScreen {
     protected CcnGuiTextures background;
     protected final PlatformBlockEntity be;
-    protected final PlatformEdgePoint platform;
+    protected final CommuteStationEdgePoint platform;
 
-    public PlatformScreen(PlatformBlockEntity be, PlatformEdgePoint platform) {
+    public PlatformScreen(PlatformBlockEntity be, CommuteStationEdgePoint platform) {
         super(/*Component.literal(platform.code)*/);
         this.be = be;
         this.platform = platform;
@@ -55,7 +55,7 @@ public abstract class PlatformScreen extends AbstractSimiScreen {
         private IconButton removeStation;
         private IconButton editPlatform;
 
-        public Overview(PlatformBlockEntity be, PlatformEdgePoint platform) {
+        public Overview(PlatformBlockEntity be, CommuteStationEdgePoint platform) {
             super(be,platform);
             this.background = CcnGuiTextures.TRANSIT_STATION_PLATFORM;
         }
@@ -125,7 +125,7 @@ public abstract class PlatformScreen extends AbstractSimiScreen {
         private EditBox platformCodeBox;
         private IconButton confirmPlatformEditing;
 
-        public PlatformEditing(PlatformBlockEntity be, PlatformEdgePoint platform) {
+        public PlatformEditing(PlatformBlockEntity be, CommuteStationEdgePoint platform) {
             super(be,platform);
         }
     }

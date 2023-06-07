@@ -5,7 +5,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.saveddata.SavedData;
 
 public class CommuteNetworkSavedData extends SavedData {
-    
+    CommuteNetwork network = new CommuteNetwork();
 
     @Override
     public CompoundTag save(CompoundTag compoundTag) {

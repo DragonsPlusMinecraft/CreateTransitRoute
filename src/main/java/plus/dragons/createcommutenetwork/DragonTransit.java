@@ -17,7 +17,7 @@ import org.slf4j.Logger;
 import plus.dragons.createdragonlib.init.SafeRegistrate;
 import plus.dragons.createdragonlib.lang.Lang;
 import plus.dragons.createcommutenetwork.content.logistics.network.CommuteNetworkManager;
-import plus.dragons.createcommutenetwork.content.logistics.commute.train.platform.PlatformEdgePoint;
+import plus.dragons.createcommutenetwork.content.logistics.commute.train.commuteStation.CommuteStationEdgePoint;
 import plus.dragons.createcommutenetwork.entry.CcnBlockEntities;
 import plus.dragons.createcommutenetwork.entry.CcnBlocks;
 import plus.dragons.createcommutenetwork.entry.CcnPackets;
@@ -32,8 +32,8 @@ public class DragonTransit
     public static final CreateRegistrate REGISTRATE = new SafeRegistrate(ID);
     public static final Lang LANG = new Lang(ID);
     public static CommuteNetworkManager COMMUTE_NETWORK_MANAGER = new CommuteNetworkManager();
-    public static final EdgePointType<PlatformEdgePoint> PLATFORM =
-            EdgePointType.register(genRL("platform"), PlatformEdgePoint::new);
+    public static final EdgePointType<CommuteStationEdgePoint> COMMUTE_STATION =
+            EdgePointType.register(genRL("commute_station"), CommuteStationEdgePoint::new);
 
 
     public DragonTransit() {

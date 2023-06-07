@@ -15,7 +15,7 @@ import plus.dragons.createcommutenetwork.DragonTransit;
 import plus.dragons.createcommutenetwork.DragonTransitClient;
 
 public class CommuteNetworkManager {
-    //public DTNetwork network = new DTNetwork();
+    public CommuteNetwork network = new CommuteNetwork();
     CommuteNetworkSavedData savedData;
 
     public CommuteNetworkManager() {
@@ -51,17 +51,17 @@ public class CommuteNetworkManager {
     private void loadRouteData(MinecraftServer server) {
         if (savedData != null)
             return;
-        savedData = CommuteNetworkSavedData.load(server);
-        //network = savedData.network;
+        this.savedData = CommuteNetworkSavedData.load(server);
+        this.network = savedData.network;
     }
 
     public void cleanUp() {
-        //network = new DTNetwork();
+        this.network = new CommuteNetwork();
     }
 
     public void markDirty() {
-        if (savedData != null)
-            savedData.setDirty();
+        if (this.savedData != null)
+            this.savedData.setDirty();
     }
 
     public CommuteNetworkManager sided(LevelAccessor level) {
