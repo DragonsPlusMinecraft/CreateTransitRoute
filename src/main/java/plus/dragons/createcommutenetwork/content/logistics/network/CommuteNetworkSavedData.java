@@ -5,6 +5,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.saveddata.SavedData;
 
 public class CommuteNetworkSavedData extends SavedData {
+    
 
     @Override
     public CompoundTag save(CompoundTag compoundTag) {
@@ -23,6 +24,6 @@ public class CommuteNetworkSavedData extends SavedData {
     public static CommuteNetworkSavedData load(MinecraftServer server) {
         return server.overworld()
                 .getDataStorage()
-                .computeIfAbsent(CommuteNetworkSavedData::load, CommuteNetworkSavedData::new, "commute_network");
+                .computeIfAbsent(CommuteNetworkSavedData::load, CommuteNetworkSavedData::new, "train_network");
     }
 }

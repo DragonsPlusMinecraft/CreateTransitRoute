@@ -31,7 +31,7 @@ public class DragonTransit
     public static final String NAME = "Create Commute Network";
     public static final CreateRegistrate REGISTRATE = new SafeRegistrate(ID);
     public static final Lang LANG = new Lang(ID);
-    public static CommuteNetworkManager TRANSIT_MANAGER = new CommuteNetworkManager();
+    public static CommuteNetworkManager COMMUTE_NETWORK_MANAGER = new CommuteNetworkManager();
     public static final EdgePointType<PlatformEdgePoint> PLATFORM =
             EdgePointType.register(genRL("platform"), PlatformEdgePoint::new);
 

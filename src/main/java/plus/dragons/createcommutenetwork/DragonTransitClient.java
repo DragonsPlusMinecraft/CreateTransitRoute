@@ -10,7 +10,7 @@ import plus.dragons.createcommutenetwork.content.logistics.network.CommuteNetwor
 
 public class DragonTransitClient {
 
-    public static CommuteNetworkManager TRANSIT_MANAGER = new CommuteNetworkManager();
+    public static CommuteNetworkManager COMMUTE_NETWORK_MANAGER = new CommuteNetworkManager();
 
     public DragonTransitClient() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

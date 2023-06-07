@@ -1,6 +1,5 @@
 package plus.dragons.createcommutenetwork.content.logistics.network;
 
-import com.simibubi.create.CreateClient;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -26,7 +25,7 @@ public class CommuteNetworkManager {
     @SuppressWarnings("ConstantConditions")
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         Player player = event.getEntity();
-        var manager = DragonTransit.TRANSIT_MANAGER;
+        var manager = DragonTransit.COMMUTE_NETWORK_MANAGER;
         if (player instanceof ServerPlayer serverPlayer) {
             manager.loadRouteData(serverPlayer.getServer());
             //DTNetworkSyncPacket.Initialize.of(manager.network)
@@ -35,12 +34,12 @@ public class CommuteNetworkManager {
     }
 
     public static void onClientPlayerLeave(ClientPlayerNetworkEvent.LoggingOut event) {
-        CreateClient.RAILWAYS.cleanUp();
+        DragonTransitClient.COMMUTE_NETWORK_MANAGER.cleanUp();
     }
 
     public static void onLoadWorld(LevelEvent.Load event) {
         LevelAccessor level = event.getLevel();
-        var manager = DragonTransit.TRANSIT_MANAGER;
+        var manager = DragonTransit.COMMUTE_NETWORK_MANAGER;
         MinecraftServer server = level.getServer();
         if (server == null || server.overworld() != level)
             return;
@@ -75,6 +74,6 @@ public class CommuteNetworkManager {
 
     @OnlyIn(Dist.CLIENT)
     private void clientManager(MutableObject<CommuteNetworkManager> m) {
-        m.setValue(DragonTransitClient.TRANSIT_MANAGER);
+        m.setValue(DragonTransitClient.COMMUTE_NETWORK_MANAGER);
     }
 }
