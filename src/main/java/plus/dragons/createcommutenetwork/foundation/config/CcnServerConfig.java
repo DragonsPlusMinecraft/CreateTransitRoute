@@ -11,19 +11,19 @@ public class CcnServerConfig extends ConfigBase {
             "Maximum number of station platforms that can be assigned to a station.",
             ConfigAnnotations.RequiresRestart.SERVER.asComment());
     public final ConfigInt maxLinesInAStation = i(10, 1,
-        "maxLinesInAStation",
-        "Maximum number of lines that can be interchanged at a station.",
-        "World record are King's Cross St. Pancras in London, an interchange between six lines and Chatelet in Paris, an interchange between five lines.",
-        ConfigAnnotations.RequiresRestart.SERVER.asComment());
+            "maxLinesInAStation",
+            "Maximum number of lines that can be interchanged at a station.",
+            "World record are King's Cross St. Pancras in London, an interchange between six lines and Chatelet in Paris, an interchange between five lines.",
+            ConfigAnnotations.RequiresRestart.SERVER.asComment());
     public final ConfigInt maxStationsInALineSegment = i(40, 0,
-        "maxStationsInALine",
-        "Maximum number of stations that can be included in a line segment.",
-        ConfigAnnotations.RequiresRestart.SERVER.asComment());
+            "maxStationsInALine",
+            "Maximum number of stations that can be included in a line segment.",
+            ConfigAnnotations.RequiresRestart.SERVER.asComment());
     public final ConfigInt maxLineSegmentsInALine = i(2, 1,
-        "maxLineSegmentsInALine",
-        "Maximum number of line segments that can be counted into same line.",
-        ConfigAnnotations.RequiresRestart.SERVER.asComment());
-    
+            "maxLineSegmentsInALine",
+            "Maximum number of line segments that can be counted into same line.",
+            ConfigAnnotations.RequiresRestart.SERVER.asComment());
+
     @Override
     public void registerAll(ForgeConfigSpec.Builder builder) {
         super.registerAll(builder);

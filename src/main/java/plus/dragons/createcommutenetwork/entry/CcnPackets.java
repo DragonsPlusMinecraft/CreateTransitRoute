@@ -73,7 +73,7 @@ public enum CcnPackets {
         }
 
         private void register() {
-            if(consumeThread==ConsumeThread.MAIN)
+            if (consumeThread == ConsumeThread.MAIN)
                 channel.messageBuilder(type, index++, direction)
                         .encoder(encoder)
                         .decoder(decoder)
@@ -87,7 +87,7 @@ public enum CcnPackets {
 
         }
 
-        private enum ConsumeThread{
+        private enum ConsumeThread {
             MAIN,
             NETWORK
         }

@@ -1,4 +1,4 @@
-package plus.dragons.createcommutenetwork.content.logistics.network;
+package plus.dragons.createcommutenetwork.content.network;
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;

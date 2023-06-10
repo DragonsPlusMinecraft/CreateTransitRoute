@@ -1,4 +1,4 @@
-package plus.dragons.createcommutenetwork.content.logistics.commute.train.commuteStation;
+package plus.dragons.createcommutenetwork.content.commute.trains.commuteStation;
 
 import com.simibubi.create.foundation.networking.BlockEntityConfigurationPacket;
 import net.minecraft.core.BlockPos;
@@ -6,21 +6,26 @@ import net.minecraft.network.FriendlyByteBuf;
 
 import java.util.UUID;
 
-public class PlatformEditPacket {
+public class CommuteStationEditPacket {
 
-    public static class PlatformUnbind extends BlockEntityConfigurationPacket<PlatformBlockEntity> {
+    public static class PlatformUnbind extends BlockEntityConfigurationPacket<CommuteStationBlockEntity> {
 
         UUID unbindStation;
 
-        public static PlatformUnbind of(BlockPos pos, UUID unbindStation){
+        public static PlatformUnbind of(BlockPos pos, UUID unbindStation) {
             var ret = new PlatformUnbind(pos);
             ret.unbindStation = unbindStation;
             return ret;
 
         }
-        public PlatformUnbind(FriendlyByteBuf buffer) {super(buffer);}
 
-        public PlatformUnbind(BlockPos pos) {super(pos);}
+        public PlatformUnbind(FriendlyByteBuf buffer) {
+            super(buffer);
+        }
+
+        public PlatformUnbind(BlockPos pos) {
+            super(pos);
+        }
 
         @Override
         protected void writeSettings(FriendlyByteBuf buffer) {
@@ -33,7 +38,7 @@ public class PlatformEditPacket {
         }
 
         @Override
-        protected void applySettings(PlatformBlockEntity te) {
+        protected void applySettings(CommuteStationBlockEntity te) {
             // TODO
             /*te.getPlatform().station = null;
             PlatformEdgePoint platform = te.getPlatform();

@@ -14,18 +14,17 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-import plus.dragons.createdragonlib.init.SafeRegistrate;
-import plus.dragons.createdragonlib.lang.Lang;
-import plus.dragons.createcommutenetwork.content.logistics.network.CommuteNetworkManager;
-import plus.dragons.createcommutenetwork.content.logistics.commute.train.commuteStation.CommuteStationEdgePoint;
+import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommuteStationEdgePoint;
+import plus.dragons.createcommutenetwork.content.network.CommuteNetworkManager;
 import plus.dragons.createcommutenetwork.entry.CcnBlockEntities;
 import plus.dragons.createcommutenetwork.entry.CcnBlocks;
 import plus.dragons.createcommutenetwork.entry.CcnPackets;
 import plus.dragons.createcommutenetwork.foundation.config.CcnConfigs;
+import plus.dragons.createdragonlib.init.SafeRegistrate;
+import plus.dragons.createdragonlib.lang.Lang;
 
 @Mod(DragonTransit.ID)
-public class DragonTransit
-{
+public class DragonTransit {
     private static final Logger LOGGER = LogUtils.getLogger();
     public static final String ID = "create_commute_network";
     public static final String NAME = "Create Commute Network";

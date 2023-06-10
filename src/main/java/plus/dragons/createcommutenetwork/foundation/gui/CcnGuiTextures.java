@@ -14,10 +14,10 @@ import plus.dragons.createcommutenetwork.DragonTransit;
 public enum CcnGuiTextures implements ScreenElement {
 
     TRANSIT_STATION_PLATFORM("transit_station_platform_temp", 256, 191),
-    I_EDIT_PLATFORM("transit_station_platform_temp", 0, 191,24, 16),
-    I_BIND_STATION("transit_station_platform_temp", 24, 191,24, 16),
-    I_EDIT_STATION("transit_station_platform_temp", 48, 191,24, 16),
-    I_REMOVE_STATION("transit_station_platform_temp", 72, 191,24, 16);
+    I_EDIT_PLATFORM("transit_station_platform_temp", 0, 191, 24, 16),
+    I_BIND_STATION("transit_station_platform_temp", 24, 191, 24, 16),
+    I_EDIT_STATION("transit_station_platform_temp", 48, 191, 24, 16),
+    I_REMOVE_STATION("transit_station_platform_temp", 72, 191, 24, 16);
     public static final int FONT_COLOR = 0x575F7A;
     public final ResourceLocation location;
     public final int width;

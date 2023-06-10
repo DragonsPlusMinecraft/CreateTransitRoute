@@ -6,7 +6,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import plus.dragons.createcommutenetwork.content.logistics.network.CommuteNetworkManager;
+import plus.dragons.createcommutenetwork.content.network.CommuteNetworkManager;
 
 public class DragonTransitClient {
 

@@ -9,7 +9,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MaterialColor;
 import plus.dragons.createcommutenetwork.DragonTransit;
-import plus.dragons.createcommutenetwork.content.logistics.commute.train.commuteStation.PlatformBlock;
+import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommuteStationBlock;
 
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static plus.dragons.createcommutenetwork.DragonTransit.REGISTRATE;
@@ -20,8 +20,8 @@ public class CcnBlocks {
         REGISTRATE.creativeModeTab(() -> AllCreativeModeTabs.BASE_CREATIVE_TAB);
     }
 
-    public static final BlockEntry<PlatformBlock> TRANSIT_STATION_PLATFORM = REGISTRATE
-            .block("platform", PlatformBlock::new)
+    public static final BlockEntry<CommuteStationBlock> COMMUTE_STATION = REGISTRATE
+            .block("commute_station", CommuteStationBlock::new)
             .initialProperties(SharedProperties::stone)
             .properties(p -> p.color(MaterialColor.PODZOL))
             .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
@@ -31,6 +31,7 @@ public class CcnBlocks {
             .transform(customItemModel())
             .register();
 
-    public static void register() {}
+    public static void register() {
+    }
 
 }

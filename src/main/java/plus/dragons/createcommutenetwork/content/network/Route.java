@@ -1,4 +1,4 @@
-package plus.dragons.createcommutenetwork.content.logistics.network;
+package plus.dragons.createcommutenetwork.content.network;
 
 import com.simibubi.create.foundation.utility.Couple;
 import net.minecraft.nbt.CompoundTag;

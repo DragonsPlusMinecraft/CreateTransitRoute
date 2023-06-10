@@ -1,4 +1,4 @@
-package plus.dragons.createcommutenetwork.content.logistics.network;
+package plus.dragons.createcommutenetwork.content.network;
 
 import com.google.common.collect.MultimapBuilder;
 import com.google.common.collect.SetMultimap;

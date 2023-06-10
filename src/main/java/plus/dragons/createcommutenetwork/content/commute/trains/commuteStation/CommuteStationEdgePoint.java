@@ -1,14 +1,12 @@
-package plus.dragons.createcommutenetwork.content.logistics.commute.train.commuteStation;
+package plus.dragons.createcommutenetwork.content.commute.trains.commuteStation;
 
 import com.simibubi.create.content.trains.entity.Train;
 import com.simibubi.create.content.trains.graph.DimensionPalette;
 import com.simibubi.create.content.trains.graph.TrackNode;
 import com.simibubi.create.content.trains.signal.SingleBlockEntityEdgePoint;
-import com.simibubi.create.content.trains.station.StationBlock;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 import java.lang.ref.WeakReference;
@@ -25,7 +23,7 @@ public class CommuteStationEdgePoint extends SingleBlockEntityEdgePoint {
         nearestTrain = new WeakReference<Train>(null);
     }
 
-    private static String generateUnrepeatedCode(){
+    private static String generateUnrepeatedCode() {
         // TODO
         return "";
     }

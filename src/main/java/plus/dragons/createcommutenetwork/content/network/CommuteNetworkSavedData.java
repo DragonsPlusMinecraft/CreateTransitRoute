@@ -1,4 +1,4 @@
-package plus.dragons.createcommutenetwork.content.logistics.network;
+package plus.dragons.createcommutenetwork.content.network;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
@@ -19,7 +19,8 @@ public class CommuteNetworkSavedData extends SavedData {
         return ret;
     }
 
-    private CommuteNetworkSavedData() {}
+    private CommuteNetworkSavedData() {
+    }
 
     public static CommuteNetworkSavedData load(MinecraftServer server) {
         return server.overworld()
