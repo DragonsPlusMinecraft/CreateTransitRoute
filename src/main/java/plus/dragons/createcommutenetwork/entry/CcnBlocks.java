@@ -8,11 +8,11 @@ import com.simibubi.create.foundation.data.TagGen;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MaterialColor;
-import plus.dragons.createcommutenetwork.DragonTransit;
+import plus.dragons.createcommutenetwork.CommuteNetwork;
 import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommuteStationBlock;
 
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
-import static plus.dragons.createcommutenetwork.DragonTransit.REGISTRATE;
+import static plus.dragons.createcommutenetwork.CommuteNetwork.REGISTRATE;
 
 public class CcnBlocks {
 
@@ -27,7 +27,7 @@ public class CcnBlocks {
             .properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
             .transform(TagGen.pickaxeOnly())
             .blockstate((c, p) -> p.simpleBlock(c.get(), AssetLookup.partialBaseModel(c, p)))
-            .item(TrackTargetingBlockItem.ofType(DragonTransit.COMMUTE_STATION))
+            .item(TrackTargetingBlockItem.ofType(CommuteNetwork.COMMUTE_STATION))
             .transform(customItemModel())
             .register();
 

@@ -11,11 +11,11 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.fml.DistExecutor;
 import org.apache.commons.lang3.mutable.MutableObject;
-import plus.dragons.createcommutenetwork.DragonTransit;
-import plus.dragons.createcommutenetwork.DragonTransitClient;
+import plus.dragons.createcommutenetwork.CommuteNetwork;
+import plus.dragons.createcommutenetwork.CommuteNetworkClient;
 
 public class CommuteNetworkManager {
-    public CommuteNetwork network = new CommuteNetwork();
+    public plus.dragons.createcommutenetwork.content.network.CommuteNetwork network = new plus.dragons.createcommutenetwork.content.network.CommuteNetwork();
     CommuteNetworkSavedData savedData;
 
     public CommuteNetworkManager() {
@@ -25,7 +25,7 @@ public class CommuteNetworkManager {
     @SuppressWarnings("ConstantConditions")
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         Player player = event.getEntity();
-        var manager = DragonTransit.COMMUTE_NETWORK_MANAGER;
+        var manager = CommuteNetwork.COMMUTE_NETWORK_MANAGER;
         if (player instanceof ServerPlayer serverPlayer) {
             manager.loadRouteData(serverPlayer.getServer());
             //DTNetworkSyncPacket.Initialize.of(manager.network)
@@ -34,12 +34,12 @@ public class CommuteNetworkManager {
     }
 
     public static void onClientPlayerLeave(ClientPlayerNetworkEvent.LoggingOut event) {
-        DragonTransitClient.COMMUTE_NETWORK_MANAGER.cleanUp();
+        CommuteNetworkClient.COMMUTE_NETWORK_MANAGER.cleanUp();
     }
 
     public static void onLoadWorld(LevelEvent.Load event) {
         LevelAccessor level = event.getLevel();
-        var manager = DragonTransit.COMMUTE_NETWORK_MANAGER;
+        var manager = CommuteNetwork.COMMUTE_NETWORK_MANAGER;
         MinecraftServer server = level.getServer();
         if (server == null || server.overworld() != level)
             return;
@@ -56,7 +56,7 @@ public class CommuteNetworkManager {
     }
 
     public void cleanUp() {
-        this.network = new CommuteNetwork();
+        this.network = new plus.dragons.createcommutenetwork.content.network.CommuteNetwork();
     }
 
     public void markDirty() {
@@ -74,6 +74,6 @@ public class CommuteNetworkManager {
 
     @OnlyIn(Dist.CLIENT)
     private void clientManager(MutableObject<CommuteNetworkManager> m) {
-        m.setValue(DragonTransitClient.COMMUTE_NETWORK_MANAGER);
+        m.setValue(CommuteNetworkClient.COMMUTE_NETWORK_MANAGER);
     }
 }

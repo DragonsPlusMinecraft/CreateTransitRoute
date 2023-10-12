@@ -9,7 +9,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import plus.dragons.createcommutenetwork.DragonTransit;
+import plus.dragons.createcommutenetwork.CommuteNetwork;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class CommuteStationBlockEntity extends SmartBlockEntity implements ITran
 
     @Override
     public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
-        behaviours.add(edgePoint = new TrackTargetingBehaviour<>(this, DragonTransit.COMMUTE_STATION));
+        behaviours.add(edgePoint = new TrackTargetingBehaviour<>(this, CommuteNetwork.COMMUTE_STATION));
     }
 
     @Override

@@ -16,10 +16,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import plus.dragons.createcommutenetwork.DragonTransit;
+import plus.dragons.createcommutenetwork.CommuteNetwork;
 
 public class CcnIcons implements ScreenElement {
-    public static final ResourceLocation ICON_ATLAS = DragonTransit.genRL("textures/gui/icons.png");
+    public static final ResourceLocation ICON_ATLAS = CommuteNetwork.genRL("textures/gui/icons.png");
     public static final int ICON_ATLAS_SIZE = 256;
     private static int x = 0, y = -1;
     private int iconX;

@@ -9,7 +9,7 @@ import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import plus.dragons.createcommutenetwork.DragonTransit;
+import plus.dragons.createcommutenetwork.CommuteNetwork;
 
 public enum CcnGuiTextures implements ScreenElement {
 
@@ -34,7 +34,7 @@ public enum CcnGuiTextures implements ScreenElement {
     }
 
     private CcnGuiTextures(String location, int startX, int startY, int width, int height) {
-        this(DragonTransit.ID, location, startX, startY, width, height);
+        this(CommuteNetwork.ID, location, startX, startY, width, height);
     }
 
     private CcnGuiTextures(String namespace, String location, int startX, int startY, int width, int height) {

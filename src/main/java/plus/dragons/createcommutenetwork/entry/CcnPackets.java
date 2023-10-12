@@ -10,7 +10,7 @@ import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
-import plus.dragons.createcommutenetwork.DragonTransit;
+import plus.dragons.createcommutenetwork.CommuteNetwork;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -21,7 +21,7 @@ public enum CcnPackets {
     //DT_NETWORK_INI(DTNetworkSyncPacket.Initialize.class, DTNetworkSyncPacket.Initialize::new, PLAY_TO_CLIENT, LoadedPacket.ConsumeThread.MAIN),
     //DT_NETWORK_UPDATE(DTNetworkSyncPacket.Update.class, DTNetworkSyncPacket.Update::new, PLAY_TO_CLIENT, LoadedPacket.ConsumeThread.NETWORK);
     // PLATFORM_UNBIND(PlatformEditPacket.PlatformUnbind.class, PlatformEditPacket.PlatformUnbind::new, PLAY_TO_SERVER, LoadedPacket.ConsumeThread.NETWORK);
-    public static final ResourceLocation CHANNEL_NAME = DragonTransit.genRL("main");
+    public static final ResourceLocation CHANNEL_NAME = CommuteNetwork.genRL("main");
     public static final int NETWORK_VERSION = 1;
     public static final String NETWORK_VERSION_STR = String.valueOf(NETWORK_VERSION);
     public static SimpleChannel channel;

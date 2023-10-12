@@ -8,11 +8,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import plus.dragons.createcommutenetwork.content.network.CommuteNetworkManager;
 
-public class DragonTransitClient {
+public class CommuteNetworkClient {
 
     public static CommuteNetworkManager COMMUTE_NETWORK_MANAGER = new CommuteNetworkManager();
 
-    public DragonTransitClient() {
+    public CommuteNetworkClient() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 

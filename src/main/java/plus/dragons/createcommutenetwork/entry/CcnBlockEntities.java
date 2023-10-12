@@ -4,7 +4,7 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommuteStationBlockEntity;
 import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommuteStationRenderer;
 
-import static plus.dragons.createcommutenetwork.DragonTransit.REGISTRATE;
+import static plus.dragons.createcommutenetwork.CommuteNetwork.REGISTRATE;
 
 public class CcnBlockEntities {
 

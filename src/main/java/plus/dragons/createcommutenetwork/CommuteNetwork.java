@@ -23,8 +23,8 @@ import plus.dragons.createcommutenetwork.foundation.config.CcnConfigs;
 import plus.dragons.createdragonlib.init.SafeRegistrate;
 import plus.dragons.createdragonlib.lang.Lang;
 
-@Mod(DragonTransit.ID)
-public class DragonTransit {
+@Mod(CommuteNetwork.ID)
+public class CommuteNetwork {
     private static final Logger LOGGER = LogUtils.getLogger();
     public static final String ID = "create_commute_network";
     public static final String NAME = "Create Commute Network";
@@ -35,16 +35,16 @@ public class DragonTransit {
             EdgePointType.register(genRL("commute_station"), CommuteStationEdgePoint::new);
 
 
-    public DragonTransit() {
+    public CommuteNetwork() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
         CcnConfigs.register(ModLoadingContext.get());
 
         registerEntries(modEventBus);
-        modEventBus.addListener(DragonTransit::setup);
+        modEventBus.addListener(CommuteNetwork::setup);
         registerDTNetworkManagerEvent(forgeEventBus);
-        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> DragonTransitClient::new);
+        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> CommuteNetworkClient::new);
     }
 
     private void registerEntries(IEventBus modEventBus) {
