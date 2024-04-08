@@ -3,19 +3,16 @@ package plus.dragons.createcommutenetwork.content.network;
 import com.simibubi.create.foundation.utility.Couple;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraftforge.common.IExtensibleEnum;
 import plus.dragons.createcommutenetwork.foundation.datastructure.ISerializableData;
 
-import java.util.UUID;
-
-public class RouteSegment implements ISerializableData<RouteSegment> {
-    public UUID id;
-
+public final class Station implements ISerializableData<Station> {
+    public long id;
+    public Type type;
     public Couple<String> name;
 
-    public boolean hidden;
-
     @Override
-    public RouteSegment readFromPacket(FriendlyByteBuf packet) {
+    public Station readFromPacket(FriendlyByteBuf packet) {
         return null;
     }
 
@@ -37,5 +34,9 @@ public class RouteSegment implements ISerializableData<RouteSegment> {
     @Override
     public void deserializeNBT(CompoundTag nbt) {
 
+    }
+
+    public enum Type implements IExtensibleEnum {
+        TRAIN
     }
 }

@@ -14,8 +14,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommuteStationEdgePoint;
-import plus.dragons.createcommutenetwork.content.network.CommuteNetworkManager;
+import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommutePlatformEdgePoint;
+import plus.dragons.createcommutenetwork.content.network.NetworkManager;
 import plus.dragons.createcommutenetwork.entry.CcnBlockEntities;
 import plus.dragons.createcommutenetwork.entry.CcnBlocks;
 import plus.dragons.createcommutenetwork.entry.CcnPackets;
@@ -30,9 +30,9 @@ public class CommuteNetwork {
     public static final String NAME = "Create Commute Network";
     public static final CreateRegistrate REGISTRATE = new SafeRegistrate(ID);
     public static final Lang LANG = new Lang(ID);
-    public static CommuteNetworkManager COMMUTE_NETWORK_MANAGER = new CommuteNetworkManager();
-    public static final EdgePointType<CommuteStationEdgePoint> COMMUTE_STATION =
-            EdgePointType.register(genRL("commute_station"), CommuteStationEdgePoint::new);
+    public static NetworkManager COMMUTE_NETWORK_MANAGER = new NetworkManager();
+    public static final EdgePointType<CommutePlatformEdgePoint> COMMUTE_PLATFORM =
+            EdgePointType.register(genRL("commute_platform"), CommutePlatformEdgePoint::new);
 
 
     public CommuteNetwork() {
@@ -54,8 +54,8 @@ public class CommuteNetwork {
     }
 
     private void registerDTNetworkManagerEvent(IEventBus forgeEventBus) {
-        forgeEventBus.addListener(CommuteNetworkManager::onPlayerLoggedIn);
-        forgeEventBus.addListener(CommuteNetworkManager::onLoadWorld);
+        forgeEventBus.addListener(NetworkManager::onPlayerLoggedIn);
+        forgeEventBus.addListener(NetworkManager::onLoadWorld);
     }
 
     @SubscribeEvent

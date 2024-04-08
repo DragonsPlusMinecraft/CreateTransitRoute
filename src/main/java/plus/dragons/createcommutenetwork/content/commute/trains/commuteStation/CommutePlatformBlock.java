@@ -33,9 +33,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.DistExecutor;
 import plus.dragons.createcommutenetwork.entry.CcnBlockEntities;
 
-public class CommuteStationBlock extends Block implements IBE<CommuteStationBlockEntity>, IWrenchable, ProperWaterloggedBlock {
+public class CommutePlatformBlock extends Block implements IBE<CommutePlatformBlockEntity>, IWrenchable, ProperWaterloggedBlock {
 
-    public CommuteStationBlock(Properties pProperties) {
+    public CommutePlatformBlock(Properties pProperties) {
         super(pProperties);
         registerDefaultState(defaultBlockState().setValue(WATERLOGGED, false));
     }
@@ -123,13 +123,13 @@ public class CommuteStationBlock extends Block implements IBE<CommuteStationBloc
     }
 
     @OnlyIn(value = Dist.CLIENT)
-    protected void displayScreen(CommuteStationBlockEntity te, Player player) {
+    protected void displayScreen(CommutePlatformBlockEntity te, Player player) {
         if (!(player instanceof LocalPlayer))
             return;
-        CommuteStationEdgePoint platform = te.getPlatform();
+        CommutePlatformEdgePoint platform = te.getPlatform();
         if (platform == null)
             return;
-        ScreenOpener.open(new CommuteStationScreen(te, platform));
+        ScreenOpener.open(new CommutePlatformScreen(te, platform));
     }
 
     @Override
@@ -139,13 +139,13 @@ public class CommuteStationBlock extends Block implements IBE<CommuteStationBloc
     }
 
     @Override
-    public Class<CommuteStationBlockEntity> getBlockEntityClass() {
-        return CommuteStationBlockEntity.class;
+    public Class<CommutePlatformBlockEntity> getBlockEntityClass() {
+        return CommutePlatformBlockEntity.class;
     }
 
     @Override
-    public BlockEntityType<? extends CommuteStationBlockEntity> getBlockEntityType() {
-        return CcnBlockEntities.COMMUTE_STATION.get();
+    public BlockEntityType<? extends CommutePlatformBlockEntity> getBlockEntityType() {
+        return CcnBlockEntities.COMMUTE_PLATFORM.get();
     }
 
     @Override

@@ -6,13 +6,13 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 
 // TODO
-public class CommuteStationRenderer extends SafeBlockEntityRenderer<CommuteStationBlockEntity> {
+public class CommutePlatformRenderer extends SafeBlockEntityRenderer<CommutePlatformBlockEntity> {
 
-    public CommuteStationRenderer(BlockEntityRendererProvider.Context context) {
+    public CommutePlatformRenderer(BlockEntityRendererProvider.Context context) {
     }
 
     @Override
-    protected void renderSafe(CommuteStationBlockEntity te, float partialTicks, PoseStack ms, MultiBufferSource bufferSource, int light, int overlay) {
+    protected void renderSafe(CommutePlatformBlockEntity te, float partialTicks, PoseStack ms, MultiBufferSource bufferSource, int light, int overlay) {
 
     }
 }

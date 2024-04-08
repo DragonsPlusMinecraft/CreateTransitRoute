@@ -6,9 +6,9 @@ import net.minecraft.network.FriendlyByteBuf;
 
 import java.util.UUID;
 
-public class CommuteStationEditPacket {
+public class CommutePlatformEditPacket {
 
-    public static class PlatformUnbind extends BlockEntityConfigurationPacket<CommuteStationBlockEntity> {
+    public static class PlatformUnbind extends BlockEntityConfigurationPacket<CommutePlatformBlockEntity> {
 
         UUID unbindStation;
 
@@ -38,7 +38,7 @@ public class CommuteStationEditPacket {
         }
 
         @Override
-        protected void applySettings(CommuteStationBlockEntity te) {
+        protected void applySettings(CommutePlatformBlockEntity te) {
             // TODO
             /*te.getPlatform().station = null;
             PlatformEdgePoint platform = te.getPlatform();

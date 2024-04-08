@@ -14,11 +14,11 @@ import org.apache.commons.lang3.mutable.MutableObject;
 import plus.dragons.createcommutenetwork.CommuteNetwork;
 import plus.dragons.createcommutenetwork.CommuteNetworkClient;
 
-public class CommuteNetworkManager {
-    public plus.dragons.createcommutenetwork.content.network.CommuteNetwork network = new plus.dragons.createcommutenetwork.content.network.CommuteNetwork();
-    CommuteNetworkSavedData savedData;
+public class NetworkManager {
+    public Network network = new Network();
+    NetworkSavedData savedData;
 
-    public CommuteNetworkManager() {
+    public NetworkManager() {
         cleanUp();
     }
 
@@ -51,12 +51,12 @@ public class CommuteNetworkManager {
     private void loadRouteData(MinecraftServer server) {
         if (savedData != null)
             return;
-        this.savedData = CommuteNetworkSavedData.load(server);
+        this.savedData = NetworkSavedData.load(server);
         this.network = savedData.network;
     }
 
     public void cleanUp() {
-        this.network = new plus.dragons.createcommutenetwork.content.network.CommuteNetwork();
+        this.network = new Network();
     }
 
     public void markDirty() {
@@ -64,16 +64,16 @@ public class CommuteNetworkManager {
             this.savedData.setDirty();
     }
 
-    public CommuteNetworkManager sided(LevelAccessor level) {
+    public NetworkManager sided(LevelAccessor level) {
         if (level != null && !level.isClientSide())
             return this;
-        MutableObject<CommuteNetworkManager> m = new MutableObject<>();
+        MutableObject<NetworkManager> m = new MutableObject<>();
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> clientManager(m));
         return m.getValue();
     }
 
     @OnlyIn(Dist.CLIENT)
-    private void clientManager(MutableObject<CommuteNetworkManager> m) {
+    private void clientManager(MutableObject<NetworkManager> m) {
         m.setValue(CommuteNetworkClient.COMMUTE_NETWORK_MANAGER);
     }
 }

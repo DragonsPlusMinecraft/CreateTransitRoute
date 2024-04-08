@@ -11,13 +11,13 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import javax.annotation.Nullable;
 import java.lang.ref.WeakReference;
 
-public class CommuteStationEdgePoint extends SingleBlockEntityEdgePoint {
+public class CommutePlatformEdgePoint extends SingleBlockEntityEdgePoint {
 
     public String name;
     public String code;
     public WeakReference<Train> nearestTrain;
 
-    public CommuteStationEdgePoint() {
+    public CommutePlatformEdgePoint() {
         name = "Commute Station";
         code = generateUnrepeatedCode();
         nearestTrain = new WeakReference<Train>(null);

@@ -8,12 +8,12 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import plus.dragons.createcommutenetwork.foundation.gui.CcnGuiTextures;
 
 // TODO
-public class CommuteStationScreen extends AbstractSimiScreen {
+public class CommutePlatformScreen extends AbstractSimiScreen {
     protected CcnGuiTextures background;
-    protected final CommuteStationBlockEntity be;
-    protected final CommuteStationEdgePoint edgePoint;
+    protected final CommutePlatformBlockEntity be;
+    protected final CommutePlatformEdgePoint edgePoint;
 
-    public CommuteStationScreen(CommuteStationBlockEntity be, CommuteStationEdgePoint edgePoint) {
+    public CommutePlatformScreen(CommutePlatformBlockEntity be, CommutePlatformEdgePoint edgePoint) {
         super(/*Component.literal(platform.code)*/);
         this.be = be;
         this.edgePoint = edgePoint;

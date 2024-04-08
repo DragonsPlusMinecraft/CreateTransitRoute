@@ -1,17 +1,17 @@
 package plus.dragons.createcommutenetwork.entry;
 
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
-import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommuteStationBlockEntity;
-import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommuteStationRenderer;
+import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommutePlatformBlockEntity;
+import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommutePlatformRenderer;
 
 import static plus.dragons.createcommutenetwork.CommuteNetwork.REGISTRATE;
 
 public class CcnBlockEntities {
 
-    public static final BlockEntityEntry<CommuteStationBlockEntity> COMMUTE_STATION = REGISTRATE
-            .blockEntity("commute_station", CommuteStationBlockEntity::new)
-            .renderer(() -> CommuteStationRenderer::new)
-            .validBlocks(CcnBlocks.COMMUTE_STATION)
+    public static final BlockEntityEntry<CommutePlatformBlockEntity> COMMUTE_PLATFORM = REGISTRATE
+            .blockEntity("commute_platform", CommutePlatformBlockEntity::new)
+            .renderer(() -> CommutePlatformRenderer::new)
+            .validBlocks(CcnBlocks.COMMUTE_PLATFORM)
             .register();
 
     public static void register() {
