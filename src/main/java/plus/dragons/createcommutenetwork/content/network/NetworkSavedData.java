@@ -11,20 +11,20 @@ public class NetworkSavedData extends SavedData {
     private Long2ObjectArrayMap<Station> allStations = new Long2ObjectArrayMap<>();
 
     @Override
-    public CompoundTag save(CompoundTag compoundTag) {
-        compoundTag.put("routes", NBTHelper.writeCompoundList(allRoutes.values(), Route::serializeNBT));
-        compoundTag.put("stations", NBTHelper.writeCompoundList(allStations.values(), Station::serializeNBT));
-        return compoundTag;
+    public CompoundTag save(CompoundTag tag) {
+        tag.put("routes", NBTHelper.writeCompoundList(allRoutes.values(), Route::serializeNBT));
+        tag.put("stations", NBTHelper.writeCompoundList(allStations.values(), Station::serializeNBT));
+        return tag;
     }
 
-    private static NetworkSavedData load(CompoundTag compoundTag) {
+    private static NetworkSavedData load(CompoundTag tag) {
         NetworkSavedData data = new NetworkSavedData();
-        NBTHelper.iterateCompoundList(compoundTag.getList("routes", 10), (c) -> {
+        NBTHelper.iterateCompoundList(tag.getList("routes", 10), (c) -> {
             Route route = new Route();
             route.deserializeNBT(c);
             data.allRoutes.put(route.id, route);
         });
-        NBTHelper.iterateCompoundList(compoundTag.getList("stations", 10), (c) -> {
+        NBTHelper.iterateCompoundList(tag.getList("stations", 10), (c) -> {
             Station station = new Station();
             station.deserializeNBT(c);
             data.allStations.put(station.id, station);
