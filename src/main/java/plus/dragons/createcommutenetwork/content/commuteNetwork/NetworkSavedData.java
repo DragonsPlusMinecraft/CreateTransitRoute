@@ -1,14 +1,17 @@
-package plus.dragons.createcommutenetwork.content.network;
+package plus.dragons.createcommutenetwork.content.commuteNetwork;
 
 import com.simibubi.create.foundation.utility.NBTHelper;
-import it.unimi.dsi.fastutil.longs.Long2ObjectArrayMap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.saveddata.SavedData;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class NetworkSavedData extends SavedData {
-    private Long2ObjectArrayMap<Route> allRoutes = new Long2ObjectArrayMap<>();
-    private Long2ObjectArrayMap<Station> allStations = new Long2ObjectArrayMap<>();
+    private final Map<UUID,Route> allRoutes = new HashMap<>();
+    private final Map<UUID,Station> allStations = new HashMap<>();
 
     @Override
     public CompoundTag save(CompoundTag tag) {
@@ -41,11 +44,11 @@ public class NetworkSavedData extends SavedData {
                 .computeIfAbsent(NetworkSavedData::load, NetworkSavedData::new, "commute_network");
     }
 
-    public Long2ObjectArrayMap<Route> getRoutes() {
+    public Map<UUID,Route> getRoutes() {
         return allRoutes;
     }
 
-    public Long2ObjectArrayMap<Station> getStations() {
+    public Map<UUID,Station> getStations() {
         return allStations;
     }
 }

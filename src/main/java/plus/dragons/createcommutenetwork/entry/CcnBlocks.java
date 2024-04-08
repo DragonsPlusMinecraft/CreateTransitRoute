@@ -9,7 +9,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MaterialColor;
 import plus.dragons.createcommutenetwork.CommuteNetwork;
-import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommutePlatformBlock;
+import plus.dragons.createcommutenetwork.content.commute.train.commuteStation.CommutePlatformBlock;
 
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static plus.dragons.createcommutenetwork.CommuteNetwork.REGISTRATE;

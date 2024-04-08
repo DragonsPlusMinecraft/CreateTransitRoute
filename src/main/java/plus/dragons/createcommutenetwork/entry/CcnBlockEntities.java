@@ -1,8 +1,8 @@
 package plus.dragons.createcommutenetwork.entry;
 
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
-import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommutePlatformBlockEntity;
-import plus.dragons.createcommutenetwork.content.commute.trains.commuteStation.CommutePlatformRenderer;
+import plus.dragons.createcommutenetwork.content.commute.train.commuteStation.CommutePlatformBlockEntity;
+import plus.dragons.createcommutenetwork.content.commute.train.commuteStation.CommutePlatformRenderer;
 
 import static plus.dragons.createcommutenetwork.CommuteNetwork.REGISTRATE;
 

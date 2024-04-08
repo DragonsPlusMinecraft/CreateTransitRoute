@@ -1,4 +1,4 @@
-package plus.dragons.createcommutenetwork.content.commute.trains.commuteStation;
+package plus.dragons.createcommutenetwork.content.commute.train.commuteStation;
 
 import com.simibubi.create.foundation.networking.BlockEntityConfigurationPacket;
 import net.minecraft.core.BlockPos;

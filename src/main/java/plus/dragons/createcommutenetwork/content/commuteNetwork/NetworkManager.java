@@ -1,6 +1,5 @@
-package plus.dragons.createcommutenetwork.content.network;
+package plus.dragons.createcommutenetwork.content.commuteNetwork;
 
-import it.unimi.dsi.fastutil.longs.Long2ObjectArrayMap;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -12,9 +11,14 @@ import org.apache.commons.lang3.mutable.MutableObject;
 import plus.dragons.createcommutenetwork.CommuteNetwork;
 import plus.dragons.createcommutenetwork.CommuteNetworkClient;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class NetworkManager {
-    public Long2ObjectArrayMap<Route> allRoutes = new Long2ObjectArrayMap<>();
-    public Long2ObjectArrayMap<Station> allStations = new Long2ObjectArrayMap<>();
+    public Map<UUID,Route> allRoutes;
+    public Map<UUID,Station> allStations;
+    public NetworkSync sync;
     NetworkSavedData savedData;
 
     public NetworkManager() {
@@ -25,8 +29,8 @@ public class NetworkManager {
         var manager = CommuteNetwork.COMMUTE_NETWORK_MANAGER;
         if (player instanceof ServerPlayer serverPlayer) {
             manager.loadNetworkData(serverPlayer.getServer());
-            //DTNetworkSyncPacket.Initialize.of(manager.network)
-            //        .forEach(packet -> CcnPackets.channel.send(PacketDistributor.PLAYER.with(() -> serverPlayer), packet));
+            this.sync.sendAllRouteTo(allRoutes.values(),serverPlayer);
+            this.sync.sendAllStationTo(allStations.values(),serverPlayer);
         }
     }
 
@@ -53,8 +57,9 @@ public class NetworkManager {
     }
 
     public void cleanUp() {
-        this.allRoutes = new Long2ObjectArrayMap<>();
-        this.allStations = new Long2ObjectArrayMap<>();
+        this.allRoutes = new HashMap<>();
+        this.allStations = new HashMap<>();
+        this.sync = new NetworkSync();
     }
 
     public void markDirty() {

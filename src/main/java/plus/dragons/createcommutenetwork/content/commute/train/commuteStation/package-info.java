@@ -1,6 +1,6 @@
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-package plus.dragons.createcommutenetwork.content.network;
+package plus.dragons.createcommutenetwork.content.commute.train.commuteStation;
 
 import net.minecraft.MethodsReturnNonnullByDefault;
 

@@ -1,4 +1,4 @@
-package plus.dragons.createcommutenetwork.content.commute.trains.commuteStation;
+package plus.dragons.createcommutenetwork.content.commute.train.commuteStation;
 
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
