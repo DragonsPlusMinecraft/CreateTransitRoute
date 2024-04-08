@@ -17,11 +17,6 @@ public final class Station implements ISerializableData<Station> {
     }
 
     @Override
-    public int messagePackLength() {
-        return 0;
-    }
-
-    @Override
     public void writePacket(FriendlyByteBuf packet) {
 
     }

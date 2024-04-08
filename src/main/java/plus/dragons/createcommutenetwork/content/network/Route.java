@@ -25,11 +25,6 @@ public final class Route implements ISerializableData<Route> {
     }
 
     @Override
-    public int messagePackLength() {
-        return 0;
-    }
-
-    @Override
     public void writePacket(FriendlyByteBuf packet) {
 
     }

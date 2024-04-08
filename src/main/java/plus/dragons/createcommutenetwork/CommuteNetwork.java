@@ -43,7 +43,6 @@ public class CommuteNetwork {
 
         registerEntries(modEventBus);
         modEventBus.addListener(CommuteNetwork::setup);
-        registerDTNetworkManagerEvent(forgeEventBus);
         DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> CommuteNetworkClient::new);
     }
 
@@ -53,10 +52,6 @@ public class CommuteNetwork {
         CcnBlockEntities.register();
     }
 
-    private void registerDTNetworkManagerEvent(IEventBus forgeEventBus) {
-        forgeEventBus.addListener(NetworkManager::onPlayerLoggedIn);
-        forgeEventBus.addListener(NetworkManager::onLoadWorld);
-    }
 
     @SubscribeEvent
     public static void setup(final FMLCommonSetupEvent event) {

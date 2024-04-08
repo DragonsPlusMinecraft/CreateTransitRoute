@@ -8,7 +8,5 @@ public interface ISerializableData<T extends ISerializableData<T>> extends INBTS
 
     T readFromPacket(FriendlyByteBuf packet);
 
-    int messagePackLength();
-
     void writePacket(FriendlyByteBuf packet);
 }

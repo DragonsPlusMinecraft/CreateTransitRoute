@@ -1,62 +1,60 @@
 package plus.dragons.createcommutenetwork.content.network;
 
+import it.unimi.dsi.fastutil.longs.Long2ObjectArrayMap;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.fml.DistExecutor;
 import org.apache.commons.lang3.mutable.MutableObject;
 import plus.dragons.createcommutenetwork.CommuteNetwork;
 import plus.dragons.createcommutenetwork.CommuteNetworkClient;
 
 public class NetworkManager {
-    public Network network = new Network();
+    public Long2ObjectArrayMap<Route> allRoutes = new Long2ObjectArrayMap<>();
+    public Long2ObjectArrayMap<Station> allStations = new Long2ObjectArrayMap<>();
     NetworkSavedData savedData;
 
     public NetworkManager() {
         cleanUp();
     }
 
-    @SuppressWarnings("ConstantConditions")
-    public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        Player player = event.getEntity();
+    public void onPlayerLogin(Player player) { //TODO
         var manager = CommuteNetwork.COMMUTE_NETWORK_MANAGER;
         if (player instanceof ServerPlayer serverPlayer) {
-            manager.loadRouteData(serverPlayer.getServer());
+            manager.loadNetworkData(serverPlayer.getServer());
             //DTNetworkSyncPacket.Initialize.of(manager.network)
             //        .forEach(packet -> CcnPackets.channel.send(PacketDistributor.PLAYER.with(() -> serverPlayer), packet));
         }
     }
 
-    public static void onClientPlayerLeave(ClientPlayerNetworkEvent.LoggingOut event) {
+    public void onPlayerLogout(Player player) {
         CommuteNetworkClient.COMMUTE_NETWORK_MANAGER.cleanUp();
     }
 
-    public static void onLoadWorld(LevelEvent.Load event) {
-        LevelAccessor level = event.getLevel();
+    public void onWorldLoad(LevelAccessor level) {
         var manager = CommuteNetwork.COMMUTE_NETWORK_MANAGER;
         MinecraftServer server = level.getServer();
         if (server == null || server.overworld() != level)
             return;
         manager.cleanUp();
         manager.savedData = null;
-        manager.loadRouteData(server);
+        manager.loadNetworkData(server);
     }
 
-    private void loadRouteData(MinecraftServer server) {
+    private void loadNetworkData(MinecraftServer server) {
         if (savedData != null)
             return;
         this.savedData = NetworkSavedData.load(server);
-        this.network = savedData.network;
+        this.allRoutes = savedData.getRoutes();
+        this.allStations = savedData.getStations();
     }
 
     public void cleanUp() {
-        this.network = new Network();
+        this.allRoutes = new Long2ObjectArrayMap<>();
+        this.allStations = new Long2ObjectArrayMap<>();
     }
 
     public void markDirty() {
