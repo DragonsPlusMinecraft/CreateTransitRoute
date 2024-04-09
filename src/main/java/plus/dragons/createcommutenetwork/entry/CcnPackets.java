@@ -10,16 +10,14 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import plus.dragons.createcommutenetwork.CommuteNetwork;
 import plus.dragons.createcommutenetwork.content.commuteNetwork.packet.MultipleStationSyncPacket;
 import plus.dragons.createcommutenetwork.content.commuteNetwork.packet.RouteSyncPacket;
-import plus.dragons.createcommutenetwork.content.commuteNetwork.packet.StationSyncPacket;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
 public enum CcnPackets {
-    COMMUTE_MULTI_STATION_SYNC(MultipleStationSyncPacket.class, MultipleStationSyncPacket::new, NetworkDirection.PLAY_TO_CLIENT),
-    COMMUTE_STATION_SYNC(StationSyncPacket.class, StationSyncPacket::new, NetworkDirection.PLAY_TO_CLIENT),
-    COMMUTE_ROUTE_SYNC(RouteSyncPacket.class, RouteSyncPacket::new, NetworkDirection.PLAY_TO_CLIENT);
+    MULTI_STATION_SYNC(MultipleStationSyncPacket.class, MultipleStationSyncPacket::new, NetworkDirection.PLAY_TO_CLIENT),
+    ROUTE_SYNC(RouteSyncPacket.class, RouteSyncPacket::new, NetworkDirection.PLAY_TO_CLIENT);
     public static final ResourceLocation CHANNEL_NAME = CommuteNetwork.genRL("main");
     public static final int NETWORK_VERSION = 1;
     public static final String NETWORK_VERSION_STR = String.valueOf(NETWORK_VERSION);

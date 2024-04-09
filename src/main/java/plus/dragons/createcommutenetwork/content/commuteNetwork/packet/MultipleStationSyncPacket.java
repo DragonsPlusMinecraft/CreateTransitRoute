@@ -37,6 +37,7 @@ public class MultipleStationSyncPacket extends SimplePacketBase {
     @Override
     public boolean handle(NetworkEvent.Context context) {
         stations.forEach(s-> CommuteNetworkClient.COMMUTE_NETWORK_MANAGER.allStations.put(s.id,s));
+        CommuteNetworkClient.COMMUTE_NETWORK_MANAGER.markClientCacheDirty();
         return true;
     }
 }

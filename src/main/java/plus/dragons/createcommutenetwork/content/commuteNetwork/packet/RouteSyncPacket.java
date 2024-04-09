@@ -26,6 +26,7 @@ public class RouteSyncPacket extends SimplePacketBase {
     @Override
     public boolean handle(NetworkEvent.Context context) {
         CommuteNetworkClient.COMMUTE_NETWORK_MANAGER.allRoutes.put(route.id,route);
+        CommuteNetworkClient.COMMUTE_NETWORK_MANAGER.markClientCacheDirty();
         return true;
     }
 }

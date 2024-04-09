@@ -18,6 +18,8 @@ import java.util.UUID;
 public class NetworkManager {
     public Map<UUID,Route> allRoutes;
     public Map<UUID,Station> allStations;
+    private Map<UUID, Map<String, UUID>> stationToRouteClientCache;
+    private boolean clientCacheDirty;
     public NetworkSync sync;
     NetworkSavedData savedData;
 
@@ -60,6 +62,8 @@ public class NetworkManager {
         this.allRoutes = new HashMap<>();
         this.allStations = new HashMap<>();
         this.sync = new NetworkSync();
+        clientCacheDirty = true;
+        stationToRouteClientCache = new HashMap<>();
     }
 
     public void markDirty() {
@@ -73,6 +77,27 @@ public class NetworkManager {
         MutableObject<NetworkManager> m = new MutableObject<>();
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> clientManager(m));
         return m.getValue();
+    }
+
+    public Map<UUID, Map<String, UUID>> getStationToRouteClientCache() {
+        if (clientCacheDirty) {
+            generateClientCache();
+            clientCacheDirty = false;
+        }
+        return stationToRouteClientCache;
+    }
+
+    public void generateClientCache() {
+        stationToRouteClientCache = new HashMap<>();
+        allStations.forEach((k, v) -> stationToRouteClientCache.put(k, new HashMap<>()));
+        allRoutes.forEach((k, v) -> {
+            var map = stationToRouteClientCache.get(v.stationIds);
+            v.stationToPlatform.forEach((id, platformCode) -> map.put(platformCode, id));
+        });
+    }
+
+    public void markClientCacheDirty() {
+        this.clientCacheDirty = true;
     }
 
     @OnlyIn(Dist.CLIENT)

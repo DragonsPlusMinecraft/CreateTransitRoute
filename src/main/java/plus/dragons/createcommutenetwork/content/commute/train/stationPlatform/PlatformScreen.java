@@ -4,12 +4,17 @@ import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.foundation.gui.AbstractSimiScreen;
 import com.simibubi.create.foundation.gui.element.GuiGameElement;
+import com.simibubi.create.foundation.gui.widget.IconButton;
+import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import plus.dragons.createcommutenetwork.foundation.gui.CcnGuiTextures;
 
 // TODO
 public class PlatformScreen extends AbstractSimiScreen {
+    private StationSuggestions stationSuggestions;
+    private EditBox platformCode;
+    private IconButton confirmButton;
     protected CcnGuiTextures background;
     protected final PlatformBlockEntity be;
     protected final PlatformEdgePoint edgePoint;
