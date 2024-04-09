@@ -6,10 +6,12 @@ import com.simibubi.create.content.trains.station.NoShadowFontWrapper;
 import com.simibubi.create.foundation.gui.AbstractSimiScreen;
 import com.simibubi.create.foundation.gui.element.GuiGameElement;
 import com.simibubi.create.foundation.gui.widget.IconButton;
+import com.simibubi.create.foundation.gui.widget.Label;
 import com.simibubi.create.foundation.utility.Components;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import plus.dragons.createcommutenetwork.CommuteNetwork;
 import plus.dragons.createcommutenetwork.entry.CcnPackets;
 import plus.dragons.createcommutenetwork.foundation.gui.CcnGuiTextures;
 import plus.dragons.createcommutenetwork.foundation.network.PlatformEditPacket;
@@ -17,9 +19,10 @@ import plus.dragons.createcommutenetwork.foundation.network.PlatformEditPacket;
 import java.util.function.Consumer;
 
 public class PlatformScreen extends AbstractSimiScreen {
-    private StationSuggestions stationSuggestions; //TODO need to finish auto suggest and auto check for validity
+    private StationSuggestions stationSuggestions;//TODO need to finish auto suggest and auto check for validity
+    private Label stationLabel;
     private EditBox platformCode;
-    private IconButton confirmButton;
+    private IconButton unbindStationButton;
     protected CcnGuiTextures background;
     protected final PlatformBlockEntity be;
     protected final Platform edgePoint;
@@ -40,10 +43,18 @@ public class PlatformScreen extends AbstractSimiScreen {
         int x = this.guiLeft;
         int y = this.guiTop;
 
+        if (edgePoint.belongToStation == null) {
+            stationLabel = new Label(x + 20, y + 10, Component.literal("Not bind to station"));
+        } else {
+            var station = CommuteNetwork.COMMUTE_NETWORK_MANAGER.allStations.get(edgePoint.belongToStation);
+            if (station == null) stationLabel = new Label(x + 20, y + 10, Component.literal("Station has been delete"));
+            else stationLabel = new Label(x + 20, y + 10, Component.literal(station.name.getFirst()));
+        }
+
         Consumer<String> onTextChanged = (s) -> {
             this.platformCode.x = this.nameBoxX(s, this.platformCode);
         };
-        this.platformCode = new EditBox(new NoShadowFontWrapper(this.font), x + 23, y + 4, this.background.width - 20, 10, Components.literal(this.edgePoint.platformCode));
+        this.platformCode = new EditBox(new NoShadowFontWrapper(this.font), x + 40, y + 40, this.background.width - 20, 10, Components.literal(this.edgePoint.platformCode));
         this.platformCode.setBordered(false);
         this.platformCode.setMaxLength(25);
         this.platformCode.setTextColor(5841956);

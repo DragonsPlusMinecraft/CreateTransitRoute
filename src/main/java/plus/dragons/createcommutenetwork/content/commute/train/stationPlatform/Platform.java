@@ -26,11 +26,6 @@ public class Platform extends SingleBlockEntityEdgePoint {
         nearestTrain = new WeakReference<>(null);
     }
 
-    private static String generateUnrepeatedCode() {
-        // TODO
-        return "";
-    }
-
     @Override
     public void blockEntityAdded(BlockEntity blockEntity, boolean front) {
         super.blockEntityAdded(blockEntity, front);

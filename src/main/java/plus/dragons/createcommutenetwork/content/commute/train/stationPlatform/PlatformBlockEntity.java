@@ -61,7 +61,7 @@ public class PlatformBlockEntity extends SmartBlockEntity implements ITransforma
     }
 
     @Override
-    protected void write(CompoundTag tag, boolean clientPacket) {
+    protected void write(CompoundTag tag, boolean clientPacket) { //TODO fix platform info not save
         super.write(tag, clientPacket);
     }
 
