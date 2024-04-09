@@ -18,7 +18,7 @@ import java.util.UUID;
 public class NetworkManager {
     public Map<UUID,Route> allRoutes;
     public Map<UUID,Station> allStations;
-    private Map<UUID, Map<String, UUID>> stationToRouteClientCache;
+    private Map<UUID, Map<String, UUID>> platformOfStationToRouteClientCache;
     private boolean clientCacheDirty;
     public NetworkSync sync;
     NetworkSavedData savedData;
@@ -27,7 +27,7 @@ public class NetworkManager {
         cleanUp();
     }
 
-    public void onPlayerLogin(Player player) { //TODO
+    public void onPlayerLogin(Player player) {
         var manager = CommuteNetwork.COMMUTE_NETWORK_MANAGER;
         if (player instanceof ServerPlayer serverPlayer) {
             manager.loadNetworkData(serverPlayer.getServer());
@@ -56,6 +56,7 @@ public class NetworkManager {
         this.savedData = NetworkSavedData.load(server);
         this.allRoutes = savedData.getRoutes();
         this.allStations = savedData.getStations();
+        generateClientCache();
     }
 
     public void cleanUp() {
@@ -63,7 +64,7 @@ public class NetworkManager {
         this.allStations = new HashMap<>();
         this.sync = new NetworkSync();
         clientCacheDirty = true;
-        stationToRouteClientCache = new HashMap<>();
+        platformOfStationToRouteClientCache = new HashMap<>();
     }
 
     public void markDirty() {
@@ -79,19 +80,19 @@ public class NetworkManager {
         return m.getValue();
     }
 
-    public Map<UUID, Map<String, UUID>> getStationToRouteClientCache() {
+    public Map<UUID, Map<String, UUID>> getPlatformOfStationToRouteClientCache() {
         if (clientCacheDirty) {
             generateClientCache();
             clientCacheDirty = false;
         }
-        return stationToRouteClientCache;
+        return platformOfStationToRouteClientCache;
     }
 
     public void generateClientCache() {
-        stationToRouteClientCache = new HashMap<>();
-        allStations.forEach((k, v) -> stationToRouteClientCache.put(k, new HashMap<>()));
+        platformOfStationToRouteClientCache = new HashMap<>();
+        allStations.forEach((k, v) -> platformOfStationToRouteClientCache.put(k, new HashMap<>()));
         allRoutes.forEach((k, v) -> {
-            var map = stationToRouteClientCache.get(v.stationIds);
+            var map = platformOfStationToRouteClientCache.get(v.stationIds);
             v.stationToPlatform.forEach((id, platformCode) -> map.put(platformCode, id));
         });
     }

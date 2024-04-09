@@ -126,7 +126,7 @@ public class PlatformBlock extends Block implements IBE<PlatformBlockEntity>, IW
     protected void displayScreen(PlatformBlockEntity te, Player player) {
         if (!(player instanceof LocalPlayer))
             return;
-        PlatformEdgePoint platform = te.getPlatform();
+        Platform platform = te.getPlatform();
         if (platform == null)
             return;
         ScreenOpener.open(new PlatformScreen(te, platform));

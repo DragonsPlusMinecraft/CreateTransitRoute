@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-import plus.dragons.createcommutenetwork.content.commute.train.stationPlatform.PlatformEdgePoint;
+import plus.dragons.createcommutenetwork.content.commute.train.stationPlatform.Platform;
 import plus.dragons.createcommutenetwork.content.commuteNetwork.NetworkManager;
 import plus.dragons.createcommutenetwork.entry.*;
 import plus.dragons.createcommutenetwork.foundation.config.CcnConfigs;
@@ -30,8 +30,8 @@ public class CommuteNetwork {
     public static final CreateRegistrate REGISTRATE = new SafeRegistrate(ID);
     public static final Lang LANG = new Lang(ID);
     public static NetworkManager COMMUTE_NETWORK_MANAGER = new NetworkManager();
-    public static final EdgePointType<PlatformEdgePoint> PLATFORM =
-            EdgePointType.register(genRL("platform"), PlatformEdgePoint::new);
+    public static final EdgePointType<Platform> PLATFORM =
+            EdgePointType.register(genRL("platform"), Platform::new);
 
     private static CreativeModeTab CREATIVE_MODE_TAB;
 

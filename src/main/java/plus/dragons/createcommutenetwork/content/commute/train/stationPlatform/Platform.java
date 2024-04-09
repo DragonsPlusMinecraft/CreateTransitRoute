@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.util.UUID;
 
-public class PlatformEdgePoint extends SingleBlockEntityEdgePoint {
+public class Platform extends SingleBlockEntityEdgePoint {
 
     public UUID id;
     @Nullable
@@ -20,7 +20,7 @@ public class PlatformEdgePoint extends SingleBlockEntityEdgePoint {
     public String platformCode;
     public WeakReference<Train> nearestTrain;
 
-    public PlatformEdgePoint() {
+    public Platform() {
         id = UUID.randomUUID();
         platformCode = "Not Set";
         nearestTrain = new WeakReference<>(null);

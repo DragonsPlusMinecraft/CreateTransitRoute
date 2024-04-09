@@ -1,4 +1,4 @@
-package plus.dragons.createcommutenetwork.content.commuteNetwork.packet;
+package plus.dragons.createcommutenetwork.foundation.network;
 
 import com.simibubi.create.foundation.networking.SimplePacketBase;
 import com.simibubi.create.foundation.utility.NBTHelper;

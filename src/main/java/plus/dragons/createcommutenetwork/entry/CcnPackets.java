@@ -8,8 +8,9 @@ import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import plus.dragons.createcommutenetwork.CommuteNetwork;
-import plus.dragons.createcommutenetwork.content.commuteNetwork.packet.MultipleStationSyncPacket;
-import plus.dragons.createcommutenetwork.content.commuteNetwork.packet.RouteSyncPacket;
+import plus.dragons.createcommutenetwork.foundation.network.MultipleStationSyncPacket;
+import plus.dragons.createcommutenetwork.foundation.network.PlatformEditPacket;
+import plus.dragons.createcommutenetwork.foundation.network.RouteSyncPacket;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -17,7 +18,8 @@ import java.util.function.Supplier;
 
 public enum CcnPackets {
     MULTI_STATION_SYNC(MultipleStationSyncPacket.class, MultipleStationSyncPacket::new, NetworkDirection.PLAY_TO_CLIENT),
-    ROUTE_SYNC(RouteSyncPacket.class, RouteSyncPacket::new, NetworkDirection.PLAY_TO_CLIENT);
+    ROUTE_SYNC(RouteSyncPacket.class, RouteSyncPacket::new, NetworkDirection.PLAY_TO_CLIENT),
+    PLATFORM_EDIT(PlatformEditPacket.class, PlatformEditPacket::new, NetworkDirection.PLAY_TO_SERVER);
     public static final ResourceLocation CHANNEL_NAME = CommuteNetwork.genRL("main");
     public static final int NETWORK_VERSION = 1;
     public static final String NETWORK_VERSION_STR = String.valueOf(NETWORK_VERSION);
