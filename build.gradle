@@ -184,7 +184,7 @@ void addLicense(jarTask) {
 
 void removeRedundant(jarTask){
     jarTask.exclude(".cache")
-    jarTask.exclude("assets/create_commute_network/lang/unfinished")
+    jarTask.exclude("assets/create_commute_network/lang-gen")
     jarTask.exclude("assets/create_commute_network/lang/default")
 }
 

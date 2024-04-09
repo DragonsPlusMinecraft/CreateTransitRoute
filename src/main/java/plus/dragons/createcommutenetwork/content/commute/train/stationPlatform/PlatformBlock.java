@@ -1,4 +1,4 @@
-package plus.dragons.createcommutenetwork.content.commute.train.commuteStation;
+package plus.dragons.createcommutenetwork.content.commute.train.stationPlatform;
 
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllShapes;
@@ -33,9 +33,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.DistExecutor;
 import plus.dragons.createcommutenetwork.entry.CcnBlockEntities;
 
-public class CommutePlatformBlock extends Block implements IBE<CommutePlatformBlockEntity>, IWrenchable, ProperWaterloggedBlock {
+public class PlatformBlock extends Block implements IBE<PlatformBlockEntity>, IWrenchable, ProperWaterloggedBlock {
 
-    public CommutePlatformBlock(Properties pProperties) {
+    public PlatformBlock(Properties pProperties) {
         super(pProperties);
         registerDefaultState(defaultBlockState().setValue(WATERLOGGED, false));
     }
@@ -123,13 +123,13 @@ public class CommutePlatformBlock extends Block implements IBE<CommutePlatformBl
     }
 
     @OnlyIn(value = Dist.CLIENT)
-    protected void displayScreen(CommutePlatformBlockEntity te, Player player) {
+    protected void displayScreen(PlatformBlockEntity te, Player player) {
         if (!(player instanceof LocalPlayer))
             return;
-        CommutePlatformEdgePoint platform = te.getPlatform();
+        PlatformEdgePoint platform = te.getPlatform();
         if (platform == null)
             return;
-        ScreenOpener.open(new CommutePlatformScreen(te, platform));
+        ScreenOpener.open(new PlatformScreen(te, platform));
     }
 
     @Override
@@ -139,13 +139,13 @@ public class CommutePlatformBlock extends Block implements IBE<CommutePlatformBl
     }
 
     @Override
-    public Class<CommutePlatformBlockEntity> getBlockEntityClass() {
-        return CommutePlatformBlockEntity.class;
+    public Class<PlatformBlockEntity> getBlockEntityClass() {
+        return PlatformBlockEntity.class;
     }
 
     @Override
-    public BlockEntityType<? extends CommutePlatformBlockEntity> getBlockEntityType() {
-        return CcnBlockEntities.COMMUTE_PLATFORM.get();
+    public BlockEntityType<? extends PlatformBlockEntity> getBlockEntityType() {
+        return CcnBlockEntities.PLATFORM.get();
     }
 
     @Override

@@ -21,43 +21,43 @@ public final class Route implements INBTSerializable<CompoundTag> {
     @Override
     public CompoundTag serializeNBT() {
         CompoundTag tag = new CompoundTag();
-        tag.putUUID("id",id);
-        tag.putString("type",type.name());
-        tag.putString("name",name.getFirst());
-        tag.putString("altName",name.getSecond());
-        tag.put("stationIds", NBTHelper.writeCompoundList(stationIds,id->{
+        tag.putUUID("Id", id);
+        tag.putString("Type", type.name());
+        tag.putString("Name", name.getFirst());
+        tag.putString("AltName", name.getSecond());
+        tag.put("StationIds", NBTHelper.writeCompoundList(stationIds, id -> {
             CompoundTag compoundTag = new CompoundTag();
             compoundTag.putUUID("V", id);
             return compoundTag;
         }));
-        tag.put("stationToPlatform", NBTHelper.writeCompoundList(stationToPlatform.keySet(), key->{
+        tag.put("StationToPlatform", NBTHelper.writeCompoundList(stationToPlatform.keySet(), key -> {
             CompoundTag tag1 = new CompoundTag();
-            tag1.putUUID("station",key);
-            tag1.putString("platform",stationToPlatform.get(key));
+            tag1.putUUID("Station", key);
+            tag1.putString("Platform", stationToPlatform.get(key));
             return tag1;
         }));
-        tag.putInt("color",color);
-        tag.putBoolean("hidden",hidden);
-        tag.putBoolean("reverse",reverse);
+        tag.putInt("Color", color);
+        tag.putBoolean("Hidden", hidden);
+        tag.putBoolean("Reverse", reverse);
         return tag;
     }
 
     @Override
     public void deserializeNBT(CompoundTag tag) {
-        id = tag.getUUID("id");
-        type = Type.valueOf(tag.getString("type"));
-        name = Couple.create(tag.getString("name"),tag.getString("altName"));
+        id = tag.getUUID("Id");
+        type = Type.valueOf(tag.getString("Type"));
+        name = Couple.create(tag.getString("Name"), tag.getString("AltName"));
         stationIds.clear();
-        NBTHelper.iterateCompoundList(tag.getList("stationIds", 10), (c) -> {
+        NBTHelper.iterateCompoundList(tag.getList("StationIds", 10), (c) -> {
             stationIds.add(c.getUUID("V"));
         });
         stationToPlatform.clear();
-        NBTHelper.iterateCompoundList(tag.getList("stationToPlatform", 10), (c) -> {
-            stationToPlatform.put(c.getUUID("station"),c.getString("platform"));
+        NBTHelper.iterateCompoundList(tag.getList("StationToPlatform", 10), (c) -> {
+            stationToPlatform.put(c.getUUID("Station"), c.getString("Platform"));
         });
-        color = tag.getInt("color");
-        hidden = tag.getBoolean("hidden");
-        reverse = tag.getBoolean("reverse");
+        color = tag.getInt("Color");
+        hidden = tag.getBoolean("Hidden");
+        reverse = tag.getBoolean("Reverse");
     }
 
     public enum Type implements IExtensibleEnum {

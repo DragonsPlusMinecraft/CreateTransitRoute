@@ -13,15 +13,15 @@ public final class Station implements INBTSerializable<CompoundTag> {
     @Override
     public CompoundTag serializeNBT() {
         CompoundTag tag = new CompoundTag();
-        tag.putUUID("id", id);
-        tag.putString("name", name.getFirst());
-        tag.putString("altName", name.getSecond());
+        tag.putUUID("Id", id);
+        tag.putString("Name", name.getFirst());
+        tag.putString("AltName", name.getSecond());
         return tag;
     }
 
     @Override
     public void deserializeNBT(CompoundTag tag) {
-        id = tag.getUUID("id");
-        name = Couple.create(tag.getString("name"), tag.getString("altName"));
+        id = tag.getUUID("Id");
+        name = Couple.create(tag.getString("Name"), tag.getString("AltName"));
     }
 }

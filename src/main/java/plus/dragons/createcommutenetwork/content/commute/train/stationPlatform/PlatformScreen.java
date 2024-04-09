@@ -1,22 +1,24 @@
-package plus.dragons.createcommutenetwork.content.commute.train.commuteStation;
+package plus.dragons.createcommutenetwork.content.commute.train.stationPlatform;
 
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.foundation.gui.AbstractSimiScreen;
 import com.simibubi.create.foundation.gui.element.GuiGameElement;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import plus.dragons.createcommutenetwork.foundation.gui.CcnGuiTextures;
 
 // TODO
-public class CommutePlatformScreen extends AbstractSimiScreen {
+public class PlatformScreen extends AbstractSimiScreen {
     protected CcnGuiTextures background;
-    protected final CommutePlatformBlockEntity be;
-    protected final CommutePlatformEdgePoint edgePoint;
+    protected final PlatformBlockEntity be;
+    protected final PlatformEdgePoint edgePoint;
 
-    public CommutePlatformScreen(CommutePlatformBlockEntity be, CommutePlatformEdgePoint edgePoint) {
-        super(/*Component.literal(platform.code)*/);
+    public PlatformScreen(PlatformBlockEntity be, PlatformEdgePoint edgePoint) {
+        super(Component.literal("Platform"));
         this.be = be;
         this.edgePoint = edgePoint;
+        this.background = CcnGuiTextures.TRANSIT_STATION_PLATFORM;
     }
 
     @Override
@@ -24,6 +26,26 @@ public class CommutePlatformScreen extends AbstractSimiScreen {
         setWindowSize(background.width, background.height);
         super.init();
         clearWidgets();
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+    }
+
+    @Override
+    public boolean mouseClicked(double pMouseX, double pMouseY, int pButton) {
+        return super.mouseClicked(pMouseX, pMouseY, pButton);
+    }
+
+    @Override
+    public boolean mouseScrolled(double pMouseX, double pMouseY, double pDelta) {
+        return super.mouseScrolled(pMouseX, pMouseY, pDelta);
+    }
+
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        return super.keyPressed(keyCode, scanCode, modifiers);
     }
 
     @Override
