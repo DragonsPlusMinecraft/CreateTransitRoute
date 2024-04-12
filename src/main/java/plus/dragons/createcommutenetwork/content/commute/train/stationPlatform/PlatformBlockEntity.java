@@ -13,9 +13,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import plus.dragons.createcommutenetwork.CommuteNetwork;
 
-import javax.annotation.Nullable;
 import java.util.List;
-import java.util.UUID;
 import java.util.function.Consumer;
 
 public class PlatformBlockEntity extends SmartBlockEntity implements ITransformableBlockEntity {
@@ -35,9 +33,8 @@ public class PlatformBlockEntity extends SmartBlockEntity implements ITransforma
         behaviours.add(edgePoint = new TrackTargetingBehaviour<>(this, CommuteNetwork.PLATFORM));
     }
 
-    public boolean updatePlatformInfo(@Nullable UUID stationId, String platformCode) {
+    public boolean updatePlatformInfo(String platformCode) {
         if (!this.updatePlatformState((platform) -> {
-            platform.belongToStation = stationId;
             platform.platformCode = platformCode;
         })) {
             return false;
@@ -54,6 +51,7 @@ public class PlatformBlockEntity extends SmartBlockEntity implements ITransforma
             updateState.accept(platform);
             Create.RAILWAYS.sync.pointAdded(graphLocation.graph, platform);
             Create.RAILWAYS.markTracksDirty();
+            CommuteNetwork.COMMUTE_NETWORK_MANAGER.markDirty();
             return true;
         } else {
             return false;

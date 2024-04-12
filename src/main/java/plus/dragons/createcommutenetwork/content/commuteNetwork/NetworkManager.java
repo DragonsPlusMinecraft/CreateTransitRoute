@@ -19,6 +19,7 @@ public class NetworkManager {
     public Map<UUID,Route> allRoutes;
     public Map<UUID,Station> allStations;
     private Map<UUID, Map<String, UUID>> platformOfStationToRouteClientCache;
+    private Map<UUID, UUID> platformToStationClientCache;
     private boolean clientCacheDirty;
     public NetworkSync sync;
     NetworkSavedData savedData;
@@ -88,12 +89,26 @@ public class NetworkManager {
         return platformOfStationToRouteClientCache;
     }
 
+    public Map<UUID, UUID> getPlatformToStationClientCache() {
+        if (clientCacheDirty) {
+            generateClientCache();
+            clientCacheDirty = false;
+        }
+        return platformToStationClientCache;
+    }
+
     public void generateClientCache() {
         platformOfStationToRouteClientCache = new HashMap<>();
-        allStations.forEach((k, v) -> platformOfStationToRouteClientCache.put(k, new HashMap<>()));
-        allRoutes.forEach((k, v) -> {
-            var map = platformOfStationToRouteClientCache.get(v.stationIds);
-            v.stationToPlatform.forEach((id, platformCode) -> map.put(platformCode, id));
+        platformToStationClientCache = new HashMap<>();
+        allStations.forEach((stationId, station) -> {
+            platformOfStationToRouteClientCache.put(stationId, new HashMap<>());
+            station.platformIds.forEach((platformId) -> {
+                platformToStationClientCache.put(platformId, stationId);
+            });
+        });
+        allRoutes.forEach((routeId, route) -> {
+            var map = platformOfStationToRouteClientCache.get(route.stationIds);
+            route.stationToPlatform.forEach((platformId, platformCode) -> map.put(platformCode, platformId));
         });
     }
 

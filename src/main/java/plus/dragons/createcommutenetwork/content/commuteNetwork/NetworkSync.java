@@ -3,8 +3,8 @@ package plus.dragons.createcommutenetwork.content.commuteNetwork;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.PacketDistributor;
 import plus.dragons.createcommutenetwork.entry.CcnPackets;
-import plus.dragons.createcommutenetwork.foundation.network.MultipleStationSyncPacket;
-import plus.dragons.createcommutenetwork.foundation.network.RouteSyncPacket;
+import plus.dragons.createcommutenetwork.foundation.network.toClient.MultipleStationSyncPacket;
+import plus.dragons.createcommutenetwork.foundation.network.toClient.RouteSyncPacket;
 
 import java.util.ArrayList;
 import java.util.Collection;

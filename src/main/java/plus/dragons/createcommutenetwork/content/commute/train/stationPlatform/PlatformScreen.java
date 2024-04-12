@@ -12,9 +12,11 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import plus.dragons.createcommutenetwork.CommuteNetwork;
+import plus.dragons.createcommutenetwork.CommuteNetworkClient;
+import plus.dragons.createcommutenetwork.content.commuteNetwork.NetworkManager;
 import plus.dragons.createcommutenetwork.entry.CcnPackets;
 import plus.dragons.createcommutenetwork.foundation.gui.CcnGuiTextures;
-import plus.dragons.createcommutenetwork.foundation.network.PlatformEditPacket;
+import plus.dragons.createcommutenetwork.foundation.network.toServer.PlatformCodePacket;
 
 import java.util.function.Consumer;
 
@@ -26,6 +28,7 @@ public class PlatformScreen extends AbstractSimiScreen {
     protected CcnGuiTextures background;
     protected final PlatformBlockEntity be;
     protected final Platform edgePoint;
+    protected final NetworkManager networkManager;
 
     // TODO display info of other platform info
 
@@ -34,6 +37,7 @@ public class PlatformScreen extends AbstractSimiScreen {
         this.be = be;
         this.edgePoint = edgePoint;
         this.background = CcnGuiTextures.TRANSIT_STATION_PLATFORM;
+        this.networkManager = CommuteNetworkClient.COMMUTE_NETWORK_MANAGER;
     }
 
     @Override
@@ -43,13 +47,15 @@ public class PlatformScreen extends AbstractSimiScreen {
         int x = this.guiLeft;
         int y = this.guiTop;
 
-        if (edgePoint.belongToStation == null) {
+        var stationId = networkManager.getPlatformToStationClientCache().getOrDefault(edgePoint.id, null);
+        if (stationId == null) {
             stationLabel = new Label(x + 20, y + 10, Component.literal("Not bind to station"));
         } else {
-            var station = CommuteNetwork.COMMUTE_NETWORK_MANAGER.allStations.get(edgePoint.belongToStation);
+            var station = CommuteNetwork.COMMUTE_NETWORK_MANAGER.allStations.get(stationId);
             if (station == null) stationLabel = new Label(x + 20, y + 10, Component.literal("Station has been delete"));
             else stationLabel = new Label(x + 20, y + 10, Component.literal(station.name.getFirst()));
         }
+        stationLabel.visible = true;
 
         Consumer<String> onTextChanged = (s) -> {
             this.platformCode.x = this.nameBoxX(s, this.platformCode);
@@ -114,7 +120,7 @@ public class PlatformScreen extends AbstractSimiScreen {
     private void syncPlatformCode() {
         if (!this.platformCode.getValue().equals(this.edgePoint.platformCode)) {
             // TODO need to do a check for duplicate here
-            CcnPackets.getChannel().sendToServer(new PlatformEditPacket(this.be.getBlockPos(), edgePoint.belongToStation, this.platformCode.getValue()));
+            CcnPackets.getChannel().sendToServer(new PlatformCodePacket(this.be.getBlockPos(), this.platformCode.getValue()));
         }
 
     }

@@ -47,11 +47,9 @@ public final class Route implements INBTSerializable<CompoundTag> {
         id = tag.getUUID("Id");
         type = Type.valueOf(tag.getString("Type"));
         name = Couple.create(tag.getString("Name"), tag.getString("AltName"));
-        stationIds.clear();
         NBTHelper.iterateCompoundList(tag.getList("StationIds", 10), (c) -> {
             stationIds.add(c.getUUID("V"));
         });
-        stationToPlatform.clear();
         NBTHelper.iterateCompoundList(tag.getList("StationToPlatform", 10), (c) -> {
             stationToPlatform.put(c.getUUID("Station"), c.getString("Platform"));
         });

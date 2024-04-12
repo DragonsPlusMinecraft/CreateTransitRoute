@@ -1,4 +1,4 @@
-package plus.dragons.createcommutenetwork.foundation.network;
+package plus.dragons.createcommutenetwork.foundation.network.toClient;
 
 import com.simibubi.create.foundation.networking.SimplePacketBase;
 import net.minecraft.network.FriendlyByteBuf;
