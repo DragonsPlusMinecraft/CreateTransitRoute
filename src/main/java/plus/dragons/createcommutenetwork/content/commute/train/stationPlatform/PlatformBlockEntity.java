@@ -51,7 +51,6 @@ public class PlatformBlockEntity extends SmartBlockEntity implements ITransforma
             updateState.accept(platform);
             Create.RAILWAYS.sync.pointAdded(graphLocation.graph, platform);
             Create.RAILWAYS.markTracksDirty();
-            CommuteNetwork.COMMUTE_NETWORK_MANAGER.markDirty();
             return true;
         } else {
             return false;

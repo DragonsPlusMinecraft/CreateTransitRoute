@@ -9,7 +9,7 @@ import static plus.dragons.createcommutenetwork.CommuteNetwork.REGISTRATE;
 public class CcnBlockEntities {
 
     public static final BlockEntityEntry<PlatformBlockEntity> PLATFORM = REGISTRATE
-            .blockEntity("platform", PlatformBlockEntity::new)
+            .blockEntity("commute_platform", PlatformBlockEntity::new)
             .renderer(() -> PlatformRenderer::new)
             .validBlocks(CcnBlocks.PLATFORM)
             .register();
